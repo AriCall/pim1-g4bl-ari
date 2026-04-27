@@ -56,6 +56,7 @@
 ## PRoy: See 'http://aea.web.psi.ch/beam2lines/beam_pim1.html' for PiM1 beamline properties
 ###################################################################################
 
+#Sets the seed, labels events from 1-last, sets the beamline to only muons, sets collimator radius
 
 param -unset seed=12345
 param -unset first=1
@@ -70,14 +71,22 @@ param CollOpen=300
 # PER 2 Sept 2018 to say that the beamline momentum was 155 MeV
 # PER 23 Oct 2018 Changed P to pChannel to distinguish from beam momentum.  Propogated this throughout the file
 
+#Sets the momentum of the channel to 155 MeV
+
 param -unset pChannel=155
+
+#The offset is a user defined scaling factor of the channel momentum.
 
 # PER 23 Oct 2018 Allow the user to specify a different momentum
 param -unset pOffset=1.0
 param -unset pBeam=$pChannel*$pOffset
 
+#If the scale factor is not one, the scale of the magnetic fields are adjusted.  The 155 here should probably be the variable pChannel.
+
 # PER 2 Sept 2018 For beamline momentum other than 155, we scale current in the magnets
 param scale=$pBeam/155
+
+# Visualization presets
 
 ######################## Visualiztion helpers ###########################
 param -unset vcut=1
@@ -92,7 +101,7 @@ if $vcut==1
    g4ui when=4 "/vis/viewer/addCutawayPlane 0 0 0 m 0 -1 0"
 endif
 
-
+# Defines that there is a prebuilt fieldmap, and where it is.  Dipoles are scaled empirically.  Allows QSL and QT type magnets to be scaled.
 
 param -unset fieldMap=1
 param -unset map1=$PIM1/ASM1.g4blmap
@@ -103,11 +112,14 @@ param -unset scaleDipole=1.000295
 param -unset scaleQSL=1
 param -unset scaleQT=1
 
+#Defines output files and logs.
+
 param sepChar="_"
 param file=piM1_plastic_decay_bend_air$sepChar$beamPart$sepChar$pChannel$sepChar$pOffset$sepChar$CollOpen$sepChar$seed
 param histoFile=$file
 output $PIM1/log/$file.log
 
+#Sets the physics engine.
 
 # PER 2 Sept 2018 Basically I did a survey of what people recommended that I use 
 # PER 2 Sept 2018 for the physics engine, and the overwelming reccomendation was qgsp_bert_hp
@@ -118,11 +130,17 @@ param  -unset physicsName=QGSP_BERT_EMY
 #physics $physicsName disable='Decay'
 physics $physicsName
 
+#Defines the beamline particle composition, and their momenta.
+
 #primary particles
 param partName=$beamPart
 param tuneP=abs($pChannel)
 
+#Input angle definition.
+
 param -unset beamAngle=22.5
+
+#Define z position of the production target.
 
 param zProdTarget=-958
 param startZ=$zProdTarget
@@ -133,8 +151,12 @@ param kGpmm_to_Tpm=100
 #PRoy (Nov 4, 2018) convert kG/mm^2 to T/m^2 (for sextupole moment)
 param kGpmm2_to_Tpm2=100000
 
+#Define the radius of the iron in quads.
+
 #quad parameter RIRON
 param RIRON=800
+
+#Particles are not killed in the pipe, but are killed in shield.
 
 param killInPipe=0
 param pipeColor=0,1,1,0.4
@@ -145,7 +167,11 @@ param killAllColor=$absorbAllColor
 param -unset killInShield=1
 param shieldColor=$killAllColor
 
+# Generic particle colors
+
 particlecolor e+=1,1,1 e-=1,1,1 mu+=0,1,1 mu-=0,1,1
+
+# Only track muons
 
 #PRoy 20 Sept 2018: track cuts to keep only mu+ and e+
 #trackcuts keep=mu+,e+,pi+,pi0,mu-,e-,pi-
@@ -154,12 +180,15 @@ trackcuts keep=mu+
 #PRoy: 111 is white, 011 is light blue
 #PRoy: by default, red for negative particles, green for neutrals 
 
+#Without collective, there is no timestep ntuple generated.  What is the value of this?
+#The world is set to vaccuum, limits maximum step size, sets the start position for the beam.  Why is z not set to 0 initially, not initialZ?  Why is initialZ negative?
+
 collective
 param worldMaterial=Vacuum
 param maxstep=10 deltaChord=0.5
 start x=0. y=0. z=0. initialZ=$startZ
 
-#Adjust centerline to 22 degrees
+#Adjust centerline to 22 degrees (produced particles are moved directly into the 22 degree direction; the cornerarc is very tight)
 
 cornerarc z=$zProdTarget angle=$beamAngle centerRadius=10
 beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
@@ -179,6 +208,8 @@ virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYO
 ### define QSL quad (i.e. quadrupole magnet properties, the magnets are shown as red cylinders)
 ### The 'QSL' quad is defined here such that it has rounded + aperture. See pg 40 of user manual.
 
+#Defines QSL quads, with length and radius.  Why are only legnth and radius are defined externally? Particles in the iron are killed.
+
 #PRoy 3 Oct 2018: corrected LQSL to 590 mm to match Turtle
 param LQSL=590
 param RQSL=120
@@ -186,6 +217,8 @@ genericquad QSL fieldLength=$LQSL coilHalfWidth=50 coilRadius=150 poleTipRadius=
 
 #Define shielding tube
 tubs SHIELD innerRadius=$RIRON*1.1 outerRadius=$RIRON*1.2 kill=$killInShield color=$shieldColor
+
+#Defining a multipole iff there is no fieldmap provided.  Note that the idealsectorbend object in the documentation says that it should be followed with a cornerarc, but this might be an exception?
 
 param LPole=10
 param RPole=160
@@ -206,13 +239,15 @@ else
 endif
 
 ######################
-# Define a collimator
+# Define a collimator (mask)
 ######################
 
 param CollLength=50
 param CollWidth=200
 
 box Collimator width=$CollWidth height=400 length=$CollLength material=Cu color=.8,.8,.8 kill=1
+
+#Collimator is only a flat sheet? There needs to be subtraction?
 
 ######################
 # Define plastic sheet
@@ -242,16 +277,22 @@ box VJaw width=$VJawWidth height=$VJawHeight length=$VJawLength material=Cu colo
 #Beam elements
 #####################
 
+#Shield is placed behind the start to stop particles that might go backwards from being tracked.
+
 place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename=SheildStart
 
-place MuSEDet z=$startZ+$MuSEDetLength rename=Det0 
+#Detector at the very start; previously Det0
+
+place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
 #zntuple z=0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,22159
 
-#this places the first virtual detector
+#this places the first virtual detector 
+#That comment is false unless it's referring to the thing above it; zntuple is not used anywhere.
 
 place MuSEDet z=-$MuSEDetLength rename=S_QTA11
 
 #this places a virtual detector at start of quad QTA11
+#That is useful if true; but the z positions don'se seem to line up?
 
 #*****Define and place Quad magnet named QTA11 with circular aperture ****
 ### define properties of quad magnet with circular aperture
@@ -308,6 +349,8 @@ param PQTB1=$PDRIFT21+0.5*$LDRIFT2+0.5*$LQTB
  
 place QTB11 z=$PQTB1 
 
+#Design question - why is there a definition mid placing?
+
 #**** Define and place Quad magnet named QTB12 with rounded + aperture ****
 param LDRIFT20=110
 
@@ -319,6 +362,8 @@ param PDRIFT22=$PQTB1+0.5*$LQTB+0.5*$LDRIFT20
 
 # PRoy (Nov 9, 2018): assume turtle transport model pic from is for pi-.
 # QTB2 focuses in pi+ in x, gradient should be +ve
+
+#scaled by the whole scale, and also the scale of QT magnets.
 
 param BQTB2=1.221*$scale*$scaleQT
 
@@ -334,6 +379,7 @@ place QTB12 z=$PQTB2
 place MuSEDet z=$PQTB2+0.5*$LQTB+0.5*$MuSEDetLength+500 rename=E_QTB2
 
 # DetAQTB2 is placed 'A'fter QTB2, at its exit face
+# Though, I'd prefer that its position was not defined by variables and then an arbitrary distance.
 
 param LDRIFT3=3586
 param PDRIFT3=$PQTB2+0.5*$LQTB+0.5*$LDRIFT3
