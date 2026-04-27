@@ -504,10 +504,12 @@ place QSL rename=QSL14 gradient=$GradBQSL14 z=$PQSL14
 param LDRIFT10=1311
 param PDRIFT10=$PQSL14+0.5*$LQSL+0.5*$LDRIFT10
 
+# Testing adding a virtual detector... 
+place MuSEDet z=$PASM2-775.39-$LPole-0.5*$MuSEDetLength-12 rename=Before4
+
 #*******Place virtual detector and label it as Det4***********************************
 param PASM2=$PDRIFT10+0.5*$LDRIFT10+0.5*$L_center_line_ASM
 place MuSEDet z=$PASM2-775.39-$LPole-0.5*$MuSEDetLength-2 rename=Det4
-
 
 #**************************************************************************************
 # Change beam angle and place next set of beam elements
