@@ -357,6 +357,9 @@ param PDRIFT4=$PDRIFT3+0.5*$LDRIFT3+0.5*$LDRIFT4
 
 place SHIELD rename=SHEILD_A z=$PDRIFT4/2-250 length=$PDRIFT4+2500
 
+#Trying to place a virtual detector...
+place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-12 rename=Before1
+
 place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-2 rename=Det1
 
 #**************************************************************************************
