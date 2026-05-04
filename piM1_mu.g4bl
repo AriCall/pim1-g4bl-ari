@@ -68,6 +68,9 @@ param CollOpen=300
 
 
 # PER 2 Sept 2018 The Turtle deck that I copied the magnet parameters from was documented
+
+# What is this Turtle deck? Turtle seems to be referenced in later writing about DRIFT values, but I don't know what they actually are.
+
 # PER 2 Sept 2018 to say that the beamline momentum was 155 MeV
 # PER 23 Oct 2018 Changed P to pChannel to distinguish from beam momentum.  Propogated this throughout the file
 
@@ -292,10 +295,19 @@ place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet
 place MuSEDet z=-$MuSEDetLength rename=S_QTA11
 
 #this places a virtual detector at start of quad QTA11
-#That is useful if true; but the z positions don'se seem to line up?
+#That is useful if true; but the z positions don't seem to line up?
 
 #*****Define and place Quad magnet named QTA11 with circular aperture ****
 ### define properties of quad magnet with circular aperture
+
+#Note that all Quad magnet placements are near copy pastes of structure, so comments for that will only be here. 
+
+#LDRIFT is nonspecified and not explicated anywhere.  Here's what I know:
+#it has something to do with Turtle
+#most of the time it's explicitly written but sometimes it isn't
+#One curve down the line writes that LDRIFT is the 'length' between two objects; but this is hard to line up
+#My best guess is that it is a value written for each quad so that if one quad is moved further, the magnets after it move as well; but this breaks after the second bend, where one DRIFT value is used for all
+#Also, what is the difference between PDRIFT and LDRIFT? PDRIFT is half of LDRIFT always
 
 param LDRIFT1=0
 param PDRIFT1=$LDRIFT1/2
@@ -308,6 +320,8 @@ param RQTA1=75.0
 
 # PRoy (Nov 9, 2018): assume turtle transport model pic from is for pi+.
 # QTA1 defocuses focuses pi+ in x. i.e. gradient should be -ve (pg 62, g4beamline manual).
+
+#Magnetic field is scaled, gradient of the field is based on the radius and magnetic field of the quad.
 
 param BQTA1=-1.019*$scale*$scaleQT
 param GradQTA1=$BQTA1/$RQTA1*$kGpmm_to_Tpm 
@@ -326,6 +340,8 @@ place QTA11 z=$PQTA1
 
 #*****Define and place Quad magnet named QTB11 with rounded + aperture ****
 param LDRIFT2=131
+
+# detector placed in the midpoint
 
 place MuSEDet z=$PQTA1+0.5*$LQTA1+0.5*$LDRIFT2+0.5*$MuSEDetLength rename=M_QTA1_QTB1
 
@@ -349,7 +365,7 @@ param PQTB1=$PDRIFT21+0.5*$LDRIFT2+0.5*$LQTB
  
 place QTB11 z=$PQTB1 
 
-#Design question - why is there a definition mid placing?
+#Design question - why is there a definition mid placing? - Rewrite, the difinition is just 'what is the size / magnetic field etc.  The quad is prebuilt.  
 
 #**** Define and place Quad magnet named QTB12 with rounded + aperture ****
 param LDRIFT20=110
@@ -379,7 +395,7 @@ place QTB12 z=$PQTB2
 place MuSEDet z=$PQTB2+0.5*$LQTB+0.5*$MuSEDetLength+500 rename=E_QTB2
 
 # DetAQTB2 is placed 'A'fter QTB2, at its exit face
-# Though, I'd prefer that its position was not defined by variables and then an arbitrary distance.
+# 0.5 m after
 
 param LDRIFT3=3586
 param PDRIFT3=$PQTB2+0.5*$LQTB+0.5*$LDRIFT3
@@ -391,6 +407,8 @@ place B z=3000 rename=B1 rotation=Z90 By=.045
 
 #############Place a jaw as a rectangular slit #####################################
 
+#What does this jaw do?
+
 place HJaw z=5720-00 x=-(0.5*$HJawWidth+80.7)
 place HJaw z=5720 x=0.5*$HJawWidth+80.7 
 
@@ -400,6 +418,8 @@ place VJaw z=5720 y=0.5*$VJawHeight+80.7
 
 param LDRIFT4=1334
 param PDRIFT4=$PDRIFT3+0.5*$LDRIFT3+0.5*$LDRIFT4
+
+#Misspelled shield placed after the curve so that particles that don't make the turn are killed
 
 place SHIELD rename=SHEILD_A z=$PDRIFT4/2-250 length=$PDRIFT4+2500
 
@@ -412,11 +432,15 @@ place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-2 rename=Det1
 # Change beam angle to 75 deg and place next set of beam elements
 #**************************************************************************************
 
+#Center line and radius is defined for the cornerarc
 
 param ASMAngleDeg=75.
 param ASMAngleRad=$ASMAngleDeg*pi/180.
 param L_center_line_ASM=2.*775.39-2*$LPole
 param ASMRadius=$L_center_line_ASM/$ASMAngleRad
+
+#If the fieldmap is predefined, the cornerarc is just defined and uses the field from that. Otherwise, the bend magnets are placed and the field is calculated.  
+# I know we talked about changing some part of the corner magnets to divide mu and e, so it might be necessary to turn off fieldmap if our changes will affect it?
 
 if "$fieldMap==1"
      cornerarc z=$PDRIFT4+0.5*$LDRIFT4 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
@@ -473,6 +497,9 @@ else
 endif
 
 #********Place shield****************************************************************
+
+# What does this shield do? A previous shield was made for this purpose I believe?
+
 place SHIELD rename=sheild_bend z=$PDRIFT4+$L_center_line_ASM length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
 param LDRIFT5=1357
 param PDRIFT5=$PASM1+0.5*$L_center_line_ASM+0.5*$LDRIFT5
@@ -480,6 +507,8 @@ param beginCenter=$PASM1+0.5*$L_center_line_ASM
 
 #****place Det2 at the exit of the first dipole
 place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=E_ASM1
+
+#Detector names are not consistent, so they're also not as descriptive as they'd like to be.  I will probably rename them.
 
 #*****Place quad magnet with name QSL11 and 'round +' type aperture *******************
 
@@ -523,6 +552,7 @@ place Collimator z=11650 x=0.5*$CollWidth+$CollOpen
 
 place IFPSheet z=$PQSL12+300
 
+# What is this sheet / what are the GEMs?
 
 box IFP width=1000 height=1000 length=600 color=.8,.8,.8 kill=0 material=Air
 place IFP z=11175
@@ -541,6 +571,7 @@ place MuSEDet z=11650+$LDRIFTCollGEM+0.5*$CollLength+80+30 rename=C_IFP
 param LDRIFT8=512
 
 #P Roy: 3 Oct 2018: LDRIFT8 def. changed to match Turtle drift (412 mm + 100 mm (100 mm is to match #IFP width in turtle))
+#On this note: can this be explained?
 
 param PDRIFT8=$PDRIFT7+0.5*$MuSEDetLength+0.5*$LDRIFT7
 #same as z of IFP
@@ -549,6 +580,9 @@ param BQSL13=0.9068*$scale*$scaleQSL
 
 param GradBQSL13=$BQSL13/$RQSL*$kGpmm_to_Tpm
 param PQSL13=$PDRIFT8+$LDRIFT8+0.5*$LQSL
+
+#What is PQSL? Position I'm assuming.
+
 place QSL rename=QSL13 gradient=$GradBQSL13 z=$PQSL13
 
 place IFPSheet1 z=$PQSL13-300
@@ -579,6 +613,8 @@ place MuSEDet z=$PASM2-775.39-$LPole-0.5*$MuSEDetLength-2 rename=E_ASM2
 # Change beam angle and place next set of beam elements
 #**************************************************************************************
 param endCenter=$PDRIFT10+0.5*$LDRIFT10
+
+#I believe that this shield is here to kill particles that don't turn.  The process is the same.
 
 place SHIELD rename=SHIELD_B z=($endCenter+$beginCenter)/2.0 length=$endCenter-$beginCenter
 
@@ -611,10 +647,13 @@ else
 endif
 
 #*****************ANOTHER SHIELD*******************************
+# ^ Why?
 place SHIELD rename=sheild_bend1 z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+2 length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
 
 #*******Place virtual detector and label it as Det5***********************************
 place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=Det5
+
+#PASM2 is used below as a reference when placing new objects.
 
 #*****Place quad magnet with name QSL15 and 'round +' type aperture *******************
 param LDRIFT11=684
@@ -683,22 +722,34 @@ place beamexit z=$PQSL18+$LQSL/2+2
 param LDRIFT15=1536
 param targetLocation=22159.5
 
+#Target position is defined in the line, where the source is slightly behind.
+
 # PRoy:value of targetLocation=22159.5 mm (with Prod target z@-958 mm). 22159.5+958 mm = 23117.5 mm
+
+#Is the hall box meant to simulate the air that is around the detector? What is its purpose?
 
 box Hall width=1000 height=1000 length=570 color=.8,.8,.8 kill=0 material=Air
 #place Hall z=$targetLocation-0
 
 place MuSEDetBH z=$targetLocation-300 rename=DetBH
 
+#The detector makes sense; what is the GEM? If not another detector (which would align?)
+
 place MuSEDetGEM z=$targetLocation-270 rename=DetGEM0
 place MuSEDetGEM z=$targetLocation-210 rename=DetGEM1
 place MuSEDetGEM z=$targetLocation-150 rename=DetGEM2
 place MuSEDetGEM z=$targetLocation-110 rename=DetGEM3
 
+# Multiple halls?
+
 box Hall1 width=1000 height=1000 length=1200 color=.8,.8,.8 kill=0 material=Air
 place Hall1 z=$targetLocation-910
 
+#Target Detector is placed after the target loaction?
+
 place MuSEDet z=$targetLocation+300 rename=DetTar
+
+# Shield placed after target to kill particles
 
 place SHIELD rename=SHIELD_TAR z=$targetLocation innerRadius=2*$MuSEDetRadius outerRadius=2.1*$MuSEDetRadius length=5000
 
@@ -706,5 +757,11 @@ place MuSEDet z=$targetLocation+1500 rename=DetBC1
 
 place MuSEDet z=$targetLocation+2500 rename=DetBC2
 
+#If the shield is placed, what do these ^ detectors get?
+
+#nutple is a different kind of detector; used for counts etc.
+
 ntuple partOut detectors=Det* require=DetTar
 ntuple testOut detectors=Z* require=Z22159
+
+
