@@ -58,7 +58,7 @@
 
 #Sets the seed, labels events from 1-last, sets the beamline to only muons, sets collimator radius
 
-param -unset seed=12345
+param -unset seed=12346
 param -unset first=1
 param -unset numEvents=100000
 param -unset last=$first+$numEvents-1
@@ -287,10 +287,11 @@ place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename
 #Detector at the very start; previously Det0
 
 place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
-#zntuple z=0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,22159
+
+#Adding zntuples to see if it works?
+zntuple z=0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,22159
 
 #this places the first virtual detector 
-#That comment is false unless it's referring to the thing above it; zntuple is not used anywhere.
 
 place MuSEDet z=-$MuSEDetLength rename=S_QTA11
 
