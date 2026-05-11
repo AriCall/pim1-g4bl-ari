@@ -58,7 +58,7 @@
 
 #Sets the seed, labels events from 1-last, sets the beamline to only muons, sets collimator radius
 
-param -unset seed=12347
+param -unset seed=12348
 param -unset first=1
 param -unset numEvents=100000
 param -unset last=$first+$numEvents-1
