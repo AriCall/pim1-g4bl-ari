@@ -660,7 +660,7 @@ place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 r
 #*****Place quad magnet with name QSL15 and 'round +' type aperture *******************
 param LDRIFT11=684
 
-param BQSL15=-0.3865*$scale*$scaleQSL*.99999
+param BQSL15=-0.3865*$scale*$scaleQSL*.99999*$SCALE15
 
 param GradBQSL15=$BQSL15/$RQSL*$kGpmm_to_Tpm
 #place QSL rename=QSL15 z=2940-1452/2.0-$LQSL/2+$PASM2
@@ -673,7 +673,7 @@ place QSL rename=QSL15 gradient=$GradBQSL15 z=$PQSL15
 # PRoy : value of PQSL15 = 17246.6 mm (with Prod target z @ -958 mm).17246.6 +958 mm = 18204.6 mm
 
 #*****Place quad magnet with name QSL16 and 'round +' type aperture *******************
-param BQSL16=0.5962*$scale*$scaleQSL*1.000001
+param BQSL16=0.5962*$scale*$scaleQSL*1.000001*$SCALE16
 
 param GradBQSL16=$BQSL16/$RQSL*$kGpmm_to_Tpm
 # place QSL rename=QSL16 gradient=$GradBQSL16 z=2940-$LQSL/2+$PASM2
@@ -688,7 +688,7 @@ place QSL rename=QSL16 gradient=$GradBQSL16 z=$PQSL16
 
 #*****Place quad magnet with name QSL17 and 'round +' type aperture *******************
 
-param BQSL17=-1.3454*$scale*$scaleQSL*.999999
+param BQSL17=-1.3454*$scale*$scaleQSL*.999999*$SCALE17
 
 param GradBQSL17=$BQSL17/$RQSL*$kGpmm_to_Tpm
 #place QSL rename=QSL17 gradient=$GradBQSL17 z=4231.25+$PASM2
@@ -703,7 +703,7 @@ place QSL rename=QSL17 gradient=$GradBQSL17 z=$PQSL17
 
 #*****Place quad magnet with name QSL18 and 'round +' type aperture *******************
 
-param BQSL18=1.2568*$scale*$scaleQSL*1.00001
+param BQSL18=1.2568*$scale*$scaleQSL*1.00001*$SCALE18
 
 param GradBQSL18=$BQSL18/$RQSL*$kGpmm_to_Tpm
 #place QSL rename=QSL18 gradient=$GradBQSL18 z=4957.75+$PASM2
