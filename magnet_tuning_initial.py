@@ -3,19 +3,18 @@ import uproot
 import subprocess
 import os
 
-#os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
+os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
 
-range15 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
-range16 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
-range17 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
-range18 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
+range15 = [0.8,0.9,1,1.1,1.2]
+range16 = [0.8,0.9,1,1.1,1.2]
+range17 = [0.8,0.9,1,1.1,1.2]
+range18 = [0.8,0.9,1,1.1,1.2]
 
 #in the shape of [15,16,17,18,stdx,stdy,numHits]
 result_array = np.empty((0, 7))
 
 ranges = np.arange(0.1, 2.1, 0.1).tolist()
 for scale15 in range15:
-    print(scale15*10)
     #export the scale value
     os.environ["SCALE15"] = str(scale15)
     for scale16 in range16:
