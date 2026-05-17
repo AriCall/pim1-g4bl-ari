@@ -21,16 +21,16 @@ ranges = np.arange(0.1, 2.1, 0.1).tolist()
 for scale15 in range15:
     print(scale15*10)
     #export the scale value
-    os.environ["SCALE15"] = scale15
+    os.environ["SCALE15"] = str(scale15)
     for scale16 in range16:
         #export the scale value
-        os.environ["SCALE16"] = scale16
+        os.environ["SCALE16"] = str(scale16)
         for scale17 in range17:
             #export the scale value
-            os.environ["SCALE17"] = scale17
+            os.environ["SCALE17"] = str(scale17)
             for scale18 in range18:
                 #export the scale value
-                os.environ["SCALE18"] = scale18
+                os.environ["SCALE18"] = str(scale18)
                 #run the simulation
                 subprocess.run("g4bl $PIM1/piM1_mu.g4bl", shell=True, check=True)
                 #open the root file
