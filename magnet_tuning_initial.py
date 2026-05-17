@@ -30,7 +30,7 @@ for scale15 in range15:
                 subprocess.run("g4bl $PIM1/piM1_mu.g4bl", shell=True, check=True)
                 #open the root file
                 #it should be in the same directory this is being run in.
-                with uproot.open("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root") as file:
+                with uproot.open("piM1_plastic_decay_bend_air_e+_155_1.0_300_12348.root") as file:
                     #get the standard deviation in x and y at the end
                     x_vals = file["NTuple"]['Z22159;1']['x'].array(library="np")
                     y_vals = file["NTuple"]['Z22159;1']['y'].array(library="np")
@@ -41,7 +41,7 @@ for scale15 in range15:
                 new_values = np.array([scale15,scale16,scale17,scale18, x_std, y_std,num_hits])
                 result_array = np.vstack([result_array, new_values])
                 #delete file
-                os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
+                os.remove("piM1_plastic_decay_bend_air_e+_155_1.0_300_12348.root")
 
 #save the numpy array to a csv
 
