@@ -3,7 +3,7 @@ import uproot
 import subprocess
 import os
 
-os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
+#os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
 
 range15 = [0.7]
 range16 = [1]
