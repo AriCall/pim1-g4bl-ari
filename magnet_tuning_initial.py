@@ -5,10 +5,10 @@ import os
 
 os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
 
-range15 = [0.8,0.9,1,1.1,1.2]
-range16 = [0.8,0.9,1,1.1,1.2]
-range17 = [0.8,0.9,1,1.1,1.2]
-range18 = [0.8,0.9,1,1.1,1.2]
+range15 = [0.7,0.8,0.9,1,1.1,1.2,1.3]
+range16 = [0.7,0.8,0.9,1,1.1,1.2,1.3]
+range17 = [1]
+range18 = [1]
 
 #in the shape of [15,16,17,18,stdx,stdy,numHits]
 result_array = np.empty((0, 7))
