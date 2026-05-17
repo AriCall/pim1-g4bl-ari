@@ -3,6 +3,8 @@ import uproot
 import subprocess
 import os
 
+os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
+
 #range15 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
 #range16 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
 #range17 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
@@ -35,7 +37,7 @@ for scale15 in range15:
                 #it should be in the same directory this is being run in.
                 with uproot.open("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root") as file:
                     #get the standard deviation in x and y at the end
-                    branch_name = 'NTuple/22150'
+                    branch_name = 'NTuple/22159'
                     x_vals = file[branch_name]['x'].array(library="np")
                     y_vals = file[branch_name]['y'].array(library="np")
                     x_std = np.std(x_vals)
