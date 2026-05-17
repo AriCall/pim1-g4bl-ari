@@ -5,10 +5,10 @@ import os
 
 #os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
 
-range15 = [0.7]
-range16 = [1]
-range17 = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5]
-range18 = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5]
+range15 = [0.65,0.7,0.75]
+range16 = [0.95,1,1.05]
+range17 = [1.05,1.1,1.15]
+range18 = [1.05,1.1,1.15]
 
 #in the shape of [15,16,17,18,stdx,stdy,numHits]
 result_array = np.empty((0, 7))
@@ -45,4 +45,4 @@ for scale15 in range15:
 
 #save the numpy array to a csv
 
-np.savetxt("tuning_vals_tenths.csv", result_array, delimiter=",")
+np.savetxt("tuning_vals_specific.csv", result_array, delimiter=",")
