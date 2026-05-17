@@ -194,7 +194,7 @@ start x=0. y=0. z=0. initialZ=$startZ
 #Adjust centerline to 22 degrees (produced particles are moved directly into the 22 degree direction; the cornerarc is very tight)
 
 cornerarc z=$zProdTarget angle=$beamAngle centerRadius=10
-beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
+beam ASCII file=$PIM1/musource_but_positron.txt firstEvent=$first nEvents=$numEvents
 
 ###define a generic detector plane (i.e. the magenta planes which represent virtual detectors)
 
