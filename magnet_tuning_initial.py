@@ -45,4 +45,4 @@ for scale15 in range15:
 
 #save the numpy array to a csv
 
-np.savetxt("tuning_vals_specific.csv", result_array, delimiter=",")
+np.savetxt("tuning_vals_positron.csv", result_array, delimiter=",")
