@@ -57,10 +57,10 @@
 ###################################################################################
 
 #Sets the seed, labels events from 1-last, sets the beamline to only muons, sets collimator radius
-
+#Remember to set the number of events higher again when running; this is for a quick test.
 param -unset seed=12348
 param -unset first=1
-param -unset numEvents=100000
+param -unset numEvents=5000
 param -unset last=$first+$numEvents-1
 param -unset beamPart=mu+
 param CollOpen=300
