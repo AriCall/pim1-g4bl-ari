@@ -15,7 +15,7 @@ range17 = [1,2]
 range18 = [1,2]
 
 #in the shape of [15,16,17,18,stdx,stdy]
-result_array = np.empty((0, 5))
+result_array = np.empty((0, 6))
 
 ranges = np.arange(0.1, 2.1, 0.1).tolist()
 for scale15 in range15:
