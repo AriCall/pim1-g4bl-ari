@@ -60,9 +60,9 @@
 #Remember to set the number of events higher again when running; this is for a quick test.
 param -unset seed=12348
 param -unset first=1
-param -unset numEvents=2000
+param -unset numEvents=100000
 param -unset last=$first+$numEvents-1
-param -unset beamPart=e+
+param -unset beamPart=mu+
 param CollOpen=300
 #units are mm, CollOpen is open on one side, so total width is 2*CollOpen
 
@@ -172,13 +172,13 @@ param shieldColor=$killAllColor
 
 # Generic particle colors
 
-particlecolor e+=1,1,1 e-=1,1,1 e+=0,1,1 mu-=0,1,1
+particlecolor mu+=1,1,1 e-=1,1,1 mu+=0,1,1 mu-=0,1,1
 
 # Only track muons
 
-#PRoy 20 Sept 2018: track cuts to keep only e+ and e+
-#trackcuts keep=e+,e+,pi+,pi0,mu-,e-,pi-
-trackcuts keep=e+
+#PRoy 20 Sept 2018: track cuts to keep only mu+ and mu+
+#trackcuts keep=mu+,mu+,pi+,pi0,mu-,e-,pi-
+trackcuts keep=mu+
 
 #PRoy: 111 is white, 011 is light blue
 #PRoy: by default, red for negative particles, green for neutrals 
@@ -194,7 +194,7 @@ start x=0. y=0. z=0. initialZ=$startZ
 #Adjust centerline to 22 degrees (produced particles are moved directly into the 22 degree direction; the cornerarc is very tight)
 
 cornerarc z=$zProdTarget angle=$beamAngle centerRadius=10
-beam ASCII file=$PIM1/musource_but_positron.txt firstEvent=$first nEvents=$numEvents
+beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
 
 ###define a generic detector plane (i.e. the magenta planes which represent virtual detectors)
 
@@ -465,7 +465,7 @@ else
      #### Tuning the bending magnet#############
 
      #******Add reference particle 
-     #reference referenceMomentum=$P particle=e+ beamZ=0
+     #reference referenceMomentum=$P particle=mu+ beamZ=0
 
      #*****Tune B field, X-Z position of the bending magnet
      #param -unset Zoffset=0 Xoffset=0
@@ -494,7 +494,7 @@ else
      #P Roy (Nov 2, 2018):place sextupole magnet at exit face of dipole **********
      # to mimic the field of dipole at its faces in Turtle***********************************
 
-     place Pole rename=ASM1_back z=6384.01+$L_center_line_ASM+0.5*$LPole+1 quadrupole=2/$RPole*$kGpmm_to_Tpm sextupole=1/($RPole*$RPole)*$kGpmm2_to_Tpm2
+     place Pole rename=ASM1_back z=6384.01+$L_center_line_ASM+0.5*$LPolmu+1 quadrupole=2/$RPole*$kGpmm_to_Tpm sextupole=1/($RPole*$RPole)*$kGpmm2_to_Tpm2
 
 endif
 
@@ -508,7 +508,7 @@ param PDRIFT5=$PASM1+0.5*$L_center_line_ASM+0.5*$LDRIFT5
 param beginCenter=$PASM1+0.5*$L_center_line_ASM
 
 #****place Det2 at the exit of the first dipole
-place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=E_ASM1
+place MuSEDet z=6384.01+$L_center_line_ASM+$LPolmu+0.5*$MuSEDetLength+100 rename=E_ASM1
 
 #Detector names are not consistent, so they're also not as descriptive as they'd like to be.  I will probably rename them.
 
@@ -644,16 +644,16 @@ else
      #P Roy (Nov 2, 2018):place multipole magnet at exit face of dipole **********
      # to mimic the field corrections to dipole at its faces in Turtle*************
 
-     place Pole rename=ASM1_back z=$PASM2-775.39+$L_center_line_ASM-0.5*$LPole+1 quadrupole=2/$RPole*$kGpmm_to_Tpm sextupole=0/($RPole*$RPole)*$kGpmm2_to_Tpm2
+     place Pole rename=ASM1_back z=$PASM2-775.39+$L_center_line_ASM-0.5*$LPolmu+1 quadrupole=2/$RPole*$kGpmm_to_Tpm sextupole=0/($RPole*$RPole)*$kGpmm2_to_Tpm2
 
 endif
 
 #*****************ANOTHER SHIELD*******************************
 # ^ Why?
-place SHIELD rename=sheild_bend1 z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+2 length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
+place SHIELD rename=sheild_bend1 z=$PASM2-775.39+$L_center_line_ASM+$LPolmu+0.5*$MuSEDetLength+2 length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
 
 #*******Place virtual detector and label it as Det5***********************************
-place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=Det5
+place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPolmu+0.5*$MuSEDetLength+100 rename=Det5
 
 #PASM2 is used below as a reference when placing new objects.
 
