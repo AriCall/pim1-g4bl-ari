@@ -15,9 +15,8 @@ def beam_deviance(scales):
     subprocess.run("g4bl $PIM1/piM1_mu.g4bl", shell=True, check=True)
     with uproot.open("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root") as file:
         #get the standard deviation in x and y at the end
-        branch_name = 'NTuple/22150'
-        x_vals = file[branch_name]['x'].array(library="np")
-        y_vals = file[branch_name]['y'].array(library="np")
+        x_vals = file["NTuple"]['Z22159;1']['x'].array(library="np")
+        y_vals = file["NTuple"]['Z22159;1']['y'].array(library="np")
         x_std = np.std(x_vals)
         y_std = np.std(y_vals)
     os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
