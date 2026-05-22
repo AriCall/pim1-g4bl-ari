@@ -22,11 +22,6 @@ def beam_deviance(scales):
     os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
     return np.sqrt(x_std**2+y_std**2)
 
-print("Calling deviance")
-ex_scales = [1,1,1,1]
-print(beam_deviance(ex_scales))
-raise Exception("STOP")
-
 #Arbitrary bounds; if the minimum is found to be very close to 4 or 0.001 for any of them, I will change them.
 bounds = [(0.001,4),(0.001,4),(0.001,4),(0.001,4)]
 
