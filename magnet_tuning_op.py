@@ -8,10 +8,10 @@ import os
 
 #define a function to be opimized; returns the sqare root of the squared stds
 def beam_deviance(scales):
-    os.environ["SCALE15"] = scales[0]
-    os.environ["SCALE16"] = scales[1]
-    os.environ["SCALE17"] = scales[2]
-    os.environ["SCALE18"] = scales[3]
+    os.environ["SCALE15"] = str(scales[0])
+    os.environ["SCALE16"] = str(scales[1])
+    os.environ["SCALE17"] = str(scales[2])
+    os.environ["SCALE18"] = str(scales[3])
     subprocess.run("g4bl $PIM1/piM1_mu.g4bl", shell=True, check=True)
     with uproot.open("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root") as file:
         #get the standard deviation in x and y at the end
