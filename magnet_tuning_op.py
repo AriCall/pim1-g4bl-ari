@@ -27,5 +27,5 @@ def beam_deviance(scales):
 bounds = [(0.001,4),(0.001,4),(0.001,4),(0.001,4)]
 
 results = dict()
-results['DE'] = optimize.differential_evolution(beam_deviance,bounds) #Add maxiter = n if this takes too long
+results['DE'] = optimize.differential_evolution(beam_deviance,bounds,workers=1) #Add maxiter = n if this takes too long
 print(results['DE'])
