@@ -26,5 +26,7 @@ def beam_deviance(scales):
 bounds = [(0.001,4),(0.001,4),(0.001,4),(0.001,4)]
 
 results = dict()
-results['DE'] = optimize.differential_evolution(beam_deviance,bounds,workers=1) #Add maxiter = n if this takes too long
+results['DE'] = optimize.differential_evolution(beam_deviance,bounds,workers=1,maxiter=500) #Add maxiter = n if this takes too long
 print(results['DE'])
+with open("tuningOutput.txt", "w") as text_file:
+    text_file.write(results['DE']
