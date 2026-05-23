@@ -19,7 +19,7 @@ def beam_deviance(scales):
         y_vals = file["NTuple"]['Z22159;1']['y'].array(library="np")
         x_std = np.std(x_vals)
         y_std = np.std(y_vals)
-    os.remove("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root")
+    os.remove("piM1_plastic_decay_bend_air_e+_155_1.0_300_12348.root")
     return np.sqrt(x_std**2+y_std**2)
 
 #Arbitrary bounds; if the minimum is found to be very close to 4 or 0.001 for any of them, I will change them.
