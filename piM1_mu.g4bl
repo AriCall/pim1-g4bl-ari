@@ -62,7 +62,7 @@ param -unset seed=12348
 param -unset first=1
 param -unset numEvents=5000
 param -unset last=$first+$numEvents-1
-param -unset beamPart=mu+
+param -unset beamPart=e+
 param CollOpen=300
 #units are mm, CollOpen is open on one side, so total width is 2*CollOpen
 
@@ -178,7 +178,7 @@ particlecolor mu+=1,1,1 e-=1,1,1 e+=0,1,1 mu-=0,1,1
 
 #PRoy 20 Sept 2018: track cuts to keep only mu+ and e+
 #trackcuts keep=mu+,e+,pi+,pi0,mu-,e-,pi-
-trackcuts keep=mu+
+trackcuts keep=e+
 
 #PRoy: 111 is white, 011 is light blue
 #PRoy: by default, red for negative particles, green for neutrals 
