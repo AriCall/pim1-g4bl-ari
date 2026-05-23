@@ -13,7 +13,7 @@ def beam_deviance(scales):
     os.environ["SCALE17"] = str(scales[2])
     os.environ["SCALE18"] = str(scales[3])
     subprocess.run("g4bl $PIM1/piM1_mu.g4bl", shell=True, check=True)
-    with uproot.open("piM1_plastic_decay_bend_air_mu+_155_1.0_300_12348.root") as file:
+    with uproot.open("piM1_plastic_decay_bend_air_e+_155_1.0_300_12348.root") as file:
         #get the standard deviation in x and y at the end
         x_vals = file["NTuple"]['Z22159;1']['x'].array(library="np")
         y_vals = file["NTuple"]['Z22159;1']['y'].array(library="np")
@@ -29,4 +29,4 @@ results = dict()
 results['DE'] = optimize.differential_evolution(beam_deviance,bounds,workers=1,maxiter=500) #Add maxiter = n if this takes too long
 print(results['DE'])
 with open("tuningOutput.txt", "w") as text_file:
-    text_file.write(results['DE'])
+    text_file.write(f'{results['DE'][x]}, {results['DE'][fun]})
