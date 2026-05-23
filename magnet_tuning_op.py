@@ -29,4 +29,4 @@ results = dict()
 results['DE'] = optimize.differential_evolution(beam_deviance,bounds,workers=1,maxiter=500) #Add maxiter = n if this takes too long
 print(results['DE'])
 with open("tuningOutput.txt", "w") as text_file:
-    text_file.write(results['DE']
+    text_file.write(results['DE'])
