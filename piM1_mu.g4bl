@@ -766,4 +766,4 @@ place MuSEDet z=$targetLocation+2500 rename=DetBC2
 ntuple partOut detectors=Det* require=DetTar
 ntuple testOut detectors=Z* require=Z22159
 
-survey -
+survey file=- coord=centerline
