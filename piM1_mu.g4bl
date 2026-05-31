@@ -33,7 +33,7 @@
 #     Pg 62 g4beamline guide says +ve quad gradient yields horizontally focused quad for +ve particles.
 
 #     PRoy Nov 10, 2018
-#     Place virtual detectors before QTA1, between QTA1 and QTB1, between QTB1 and QTB2, at exit of QTB2. 
+#     Place virtual s before QTA1, between QTA1 and QTB1, between QTB1 and QTB2, at exit of QTB2. 
 #     Compare dispersion at these places with Turtle
 
 #     PRoy Nov 19, 2018
@@ -196,16 +196,16 @@ start x=0. y=0. z=0. initialZ=$startZ
 cornerarc z=$zProdTarget angle=$beamAngle centerRadius=10
 beam ASCII file=$PIM1/musource_but_positron.txt firstEvent=$first nEvents=$numEvents
 
-###define a generic detector plane (i.e. the magenta planes which represent virtual detectors)
+###define a generic  plane (i.e. the magenta planes which represent virtual s)
 
 #param MuSEDetColor=1,0,1,1 
-#(this gives the magenta color to the detector plane)
+#(this gives the magenta color to the  plane)
 
 #param MuSEDetLength=15
 #param MuSEDetRadius=500
-#virtualdetector MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
-#virtualdetector MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
-#virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
+#virtual MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
+#virtual MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
+#virtual MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
 
 
 ### define QSL quad (i.e. quadrupole magnet properties, the magnets are shown as red cylinders)
@@ -284,7 +284,7 @@ box VJaw width=$VJawWidth height=$VJawHeight length=$VJawLength material=Cu colo
 
 place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename=SheildStart
 
-#Detector at the very start; previously Det0
+# at the very start; previously Det0
 
 #place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
 
@@ -292,11 +292,11 @@ place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename
 zntuple z=-3624.344,-3609.473,-2632.9,-2618.028,-1458.544,-1443.166,-1428.294,-1054.809,-1045.57,-1029.733,-1028.742,-990.075,-989.084,-950.5-935.5,-22.5,-7.5,0,324,389.5,404.5,455,930,985,1000,1040,1515,1516.919,2015,2030,2950,3050,3863.415,3864.281,3915.376,3916.242,3941.357,3942.223,3950.45,4989.681,4999.934,5000.108,5001.753,5324.332,5512.708,5653.87,5670,5770,5847.046,6164.825,6347,6357,6362,6372,6760.291,6764.81,7200.39,7640.489,7965.78,8024.79,8039.79,9298.78,9322.78,9912.78,10024.78,10614.78,10619.68,10619.88,10875,11475,11625,11675,11857.5,11872.5,12139.68,12139.88,12144.78,12734.78,12846.78,13436.78,14645.904,14710.78,14725.78,14747.78,15073.071,15513.17,15953.269,16378.56,16393.56,16962.56,17552.56,17664.56,18254.56,18288.06,22159
 #zntuple z=0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,22159
 #zntuple zloop=0:22159:50
-#this places the first virtual detector 
+#this places the first virtual  
 
 #place MuSEDet z=-$MuSEDetLength rename=S_QTA11
 
-#this places a virtual detector at start of quad QTA11
+#this places a virtual  at start of quad QTA11
 #That is useful if true; but the z positions don't seem to line up?
 
 #*****Define and place Quad magnet named QTA11 with circular aperture ****
@@ -343,7 +343,7 @@ place QTA11 z=$PQTA1
 #*****Define and place Quad magnet named QTB11 with rounded + aperture ****
 param LDRIFT2=131
 
-# detector placed in the midpoint
+#  placed in the midpoint
 
 #place MuSEDet z=$PQTA1+0.5*$LQTA1+0.5*$LDRIFT2+0.5*$MuSEDetLength rename=M_QTA1_QTB1
 
@@ -392,7 +392,7 @@ place QTB12 z=$PQTB2
 
 #P. Roy: value of PQTB2 = 1277.5 mm (with Prod target z @ -958 mm). 1277.5 + 958 mm = 2235.5 mm
 
-#**** Define and place shield and virtual detector *****************
+#**** Define and place shield and virtual  *****************
 
 #place MuSEDet z=$PQTB2+0.5*$LQTB+0.5*$MuSEDetLength+500 rename=E_QTB2
 
@@ -425,7 +425,7 @@ param PDRIFT4=$PDRIFT3+0.5*$LDRIFT3+0.5*$LDRIFT4
 
 place SHIELD rename=SHEILD_A z=$PDRIFT4/2-250 length=$PDRIFT4+2500
 
-#Trying to place a virtual detector...
+#Trying to place a virtual ...
 #place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-12 rename=Before1
 
 #place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-2 rename=Det1
@@ -510,7 +510,7 @@ param beginCenter=$PASM1+0.5*$L_center_line_ASM
 #****place Det2 at the exit of the first dipole
 #place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=E_ASM1
 
-#Detector names are not consistent, so they're also not as descriptive as they'd like to be.  I will probably rename them.
+# names are not consistent, so they're also not as descriptive as they'd like to be.  I will probably rename them.
 
 #*****Place quad magnet with name QSL11 and 'round +' type aperture *******************
 
@@ -763,7 +763,7 @@ place SHIELD rename=SHIELD_TAR z=$targetLocation innerRadius=2*$MuSEDetRadius ou
 
 #nutple is a different kind of detector; used for counts etc.
 
-ntuple partOut detectors=Det* require=DetTar
+#ntuple partOut detectors=Det* require=DetTar
 ntuple testOut detectors=Z* require=Z22159
 
 survey file=- coord=centerline
