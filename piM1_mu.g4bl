@@ -203,9 +203,9 @@ param MuSEDetColor=1,0,1,1
 
 param MuSEDetLength=15
 param MuSEDetRadius=500
-virtualdetector MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
-virtualdetector MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
-virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
+#virtualdetector MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
+#virtualdetector MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
+#virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
 
 
 ### define QSL quad (i.e. quadrupole magnet properties, the magnets are shown as red cylinders)
@@ -286,7 +286,7 @@ place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename
 
 #Detector at the very start; previously Det0
 
-place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
+#place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
 
 #Adding zntuples to see if it works?
 zntuple z=-3624.344,-3609.473,-2632.9,-2618.028,-1458.544,-1443.166,-1428.294,-1054.809,-1045.57,-1029.733,-1028.742,-990.075,-989.084,-950.5-935.5,-22.5,-7.5,0,324,389.5,404.5,455,930,985,1000,1040,1515,1516.919,2015,2030,2950,3050,3863.415,3864.281,3915.376,3916.242,3941.357,3942.223,3950.45,4989.681,4999.934,5000.108,5001.753,5324.332,5512.708,5653.87,5670,5770,5847.046,6164.825,6347,6357,6362,6372,6760.291,6764.81,7200.39,7640.489,7965.78,8024.79,8039.79,9298.78,9322.78,9912.78,10024.78,10614.78,10619.68,10619.88,10875,11475,11625,11675,11857.5,11872.5,12139.68,12139.88,12144.78,12734.78,12846.78,13436.78,14645.904,14710.78,14725.78,14747.78,15073.071,15513.17,15953.269,16378.56,16393.56,16962.56,17552.56,17664.56,18254.56,18288.06,22159
@@ -294,7 +294,7 @@ zntuple z=-3624.344,-3609.473,-2632.9,-2618.028,-1458.544,-1443.166,-1428.294,-1
 #zntuple zloop=0:22159:50
 #this places the first virtual detector 
 
-place MuSEDet z=-$MuSEDetLength rename=S_QTA11
+#place MuSEDet z=-$MuSEDetLength rename=S_QTA11
 
 #this places a virtual detector at start of quad QTA11
 #That is useful if true; but the z positions don't seem to line up?
@@ -345,7 +345,7 @@ param LDRIFT2=131
 
 # detector placed in the midpoint
 
-place MuSEDet z=$PQTA1+0.5*$LQTA1+0.5*$LDRIFT2+0.5*$MuSEDetLength rename=M_QTA1_QTB1
+#place MuSEDet z=$PQTA1+0.5*$LQTA1+0.5*$LDRIFT2+0.5*$MuSEDetLength rename=M_QTA1_QTB1
 
 # DetAQTA1 is place 'A'fter QTA1 and before QTB1, at the mid of the gap between them
 
@@ -372,7 +372,7 @@ place QTB11 z=$PQTB1
 #**** Define and place Quad magnet named QTB12 with rounded + aperture ****
 param LDRIFT20=110
 
-place MuSEDet z=$PQTB1+0.5*$LQTB+0.5*$LDRIFT20+0.5*$MuSEDetLength rename=E_AQTB1
+#place MuSEDet z=$PQTB1+0.5*$LQTB+0.5*$LDRIFT20+0.5*$MuSEDetLength rename=E_AQTB1
 
 # DetAQTB1 is placed 'A'fter QTB1 and before QTB2, at the center of the gap between them
 
@@ -394,7 +394,7 @@ place QTB12 z=$PQTB2
 
 #**** Define and place shield and virtual detector *****************
 
-place MuSEDet z=$PQTB2+0.5*$LQTB+0.5*$MuSEDetLength+500 rename=E_QTB2
+#place MuSEDet z=$PQTB2+0.5*$LQTB+0.5*$MuSEDetLength+500 rename=E_QTB2
 
 # DetAQTB2 is placed 'A'fter QTB2, at its exit face
 # 0.5 m after
@@ -426,9 +426,9 @@ param PDRIFT4=$PDRIFT3+0.5*$LDRIFT3+0.5*$LDRIFT4
 place SHIELD rename=SHEILD_A z=$PDRIFT4/2-250 length=$PDRIFT4+2500
 
 #Trying to place a virtual detector...
-place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-12 rename=Before1
+#place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-12 rename=Before1
 
-place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-2 rename=Det1
+#place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-2 rename=Det1
 
 #**************************************************************************************
 # Change beam angle to 75 deg and place next set of beam elements
@@ -508,7 +508,7 @@ param PDRIFT5=$PASM1+0.5*$L_center_line_ASM+0.5*$LDRIFT5
 param beginCenter=$PASM1+0.5*$L_center_line_ASM
 
 #****place Det2 at the exit of the first dipole
-place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=E_ASM1
+#place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=E_ASM1
 
 #Detector names are not consistent, so they're also not as descriptive as they'd like to be.  I will probably rename them.
 
@@ -560,12 +560,12 @@ box IFP width=1000 height=1000 length=600 color=.8,.8,.8 kill=0 material=Air
 place IFP z=11175
 
 #*******Place virtual detector at the IFP and label it as Det3***********************************
-#place MuSEDet z=$PDRIFT7+0.5*$LDRIFT7+0.5*$MuSEDetLength rename=Det3
+##place MuSEDet z=$PDRIFT7+0.5*$LDRIFT7+0.5*$MuSEDetLength rename=Det3
 param LDRIFTCollGEM=80
 param CollLength=50
-#place MuSEDet z=11650 rename=Det3
-place MuSEDet z=11650+$LDRIFTCollGEM+0.5*$CollLength+80+30 rename=C_IFP
-#place MuSEDet z=11650+0.5*$LDRIFTCollGEM rename=Det3
+##place MuSEDet z=11650 rename=Det3
+#place MuSEDet z=11650+$LDRIFTCollGEM+0.5*$CollLength+80+30 rename=C_IFP
+##place MuSEDet z=11650+0.5*$LDRIFTCollGEM rename=Det3
 
 # PRoy : value of z = 11650 mm (with Prod target z @ -958 mm). 11650+958 mm = 12608 mm
 
@@ -608,7 +608,7 @@ param PDRIFT10=$PQSL14+0.5*$LQSL+0.5*$LDRIFT10
 
 #*******Place virtual detector and label it as Det4***********************************
 param PASM2=$PDRIFT10+0.5*$LDRIFT10+0.5*$L_center_line_ASM
-place MuSEDet z=$PASM2-775.39-$LPole-0.5*$MuSEDetLength-2 rename=E_ASM2
+#place MuSEDet z=$PASM2-775.39-$LPole-0.5*$MuSEDetLength-2 rename=E_ASM2
 
 
 #**************************************************************************************
@@ -653,7 +653,7 @@ endif
 place SHIELD rename=sheild_bend1 z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+2 length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
 
 #*******Place virtual detector and label it as Det5***********************************
-place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=Det5
+#place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=Det5
 
 #PASM2 is used below as a reference when placing new objects.
 
@@ -733,14 +733,14 @@ param targetLocation=22159.5
 box Hall width=1000 height=1000 length=570 color=.8,.8,.8 kill=0 material=Air
 #place Hall z=$targetLocation-0
 
-place MuSEDetBH z=$targetLocation-300 rename=DetBH
+#place MuSEDetBH z=$targetLocation-300 rename=DetBH
 
 #The detector makes sense; what is the GEM? If not another detector (which would align?)
 
-place MuSEDetGEM z=$targetLocation-270 rename=DetGEM0
-place MuSEDetGEM z=$targetLocation-210 rename=DetGEM1
-place MuSEDetGEM z=$targetLocation-150 rename=DetGEM2
-place MuSEDetGEM z=$targetLocation-110 rename=DetGEM3
+#place MuSEDetGEM z=$targetLocation-270 rename=DetGEM0
+#place MuSEDetGEM z=$targetLocation-210 rename=DetGEM1
+#place MuSEDetGEM z=$targetLocation-150 rename=DetGEM2
+#place MuSEDetGEM z=$targetLocation-110 rename=DetGEM3
 
 # Multiple halls?
 
@@ -749,15 +749,15 @@ place Hall1 z=$targetLocation-910
 
 #Target Detector is placed after the target loaction?
 
-place MuSEDet z=$targetLocation+300 rename=DetTar
+#place MuSEDet z=$targetLocation+300 rename=DetTar
 
 # Shield placed after target to kill particles
 
 place SHIELD rename=SHIELD_TAR z=$targetLocation innerRadius=2*$MuSEDetRadius outerRadius=2.1*$MuSEDetRadius length=5000
 
-place MuSEDet z=$targetLocation+1500 rename=DetBC1
+#place MuSEDet z=$targetLocation+1500 rename=DetBC1
 
-place MuSEDet z=$targetLocation+2500 rename=DetBC2
+#place MuSEDet z=$targetLocation+2500 rename=DetBC2
 
 #If the shield is placed, what do these ^ detectors get?
 
