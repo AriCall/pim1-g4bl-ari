@@ -198,11 +198,11 @@ beam ASCII file=$PIM1/musource_but_positron.txt firstEvent=$first nEvents=$numEv
 
 ###define a generic detector plane (i.e. the magenta planes which represent virtual detectors)
 
-param MuSEDetColor=1,0,1,1 
+#param MuSEDetColor=1,0,1,1 
 #(this gives the magenta color to the detector plane)
 
-param MuSEDetLength=15
-param MuSEDetRadius=500
+#param MuSEDetLength=15
+#param MuSEDetRadius=500
 #virtualdetector MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
 #virtualdetector MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
 #virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
