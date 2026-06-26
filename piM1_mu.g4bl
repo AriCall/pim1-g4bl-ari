@@ -58,11 +58,11 @@
 
 #Sets the seed, labels events from 1-last, sets the beamline to only muons, sets collimator radius
 #Remember to set the number of events higher again when running; this is for a quick test.
-param -unset seed=12348
+param -unset seed=12349
 param -unset first=1
 param -unset numEvents=100000
 param -unset last=$first+$numEvents-1
-param -unset beamPart=e+
+param -unset beamPart=mu+
 param CollOpen=300
 #units are mm, CollOpen is open on one side, so total width is 2*CollOpen
 
@@ -178,7 +178,7 @@ particlecolor mu+=1,1,1 e-=1,1,1 e+=0,1,1 mu-=0,1,1
 
 #PRoy 20 Sept 2018: track cuts to keep only mu+ and e+
 #trackcuts keep=mu+,e+,pi+,pi0,mu-,e-,pi-
-trackcuts keep=e+
+trackcuts keep=mu+
 
 #PRoy: 111 is white, 011 is light blue
 #PRoy: by default, red for negative particles, green for neutrals 
@@ -194,15 +194,15 @@ start x=0. y=0. z=0. initialZ=$startZ
 #Adjust centerline to 22 degrees (produced particles are moved directly into the 22 degree direction; the cornerarc is very tight)
 
 cornerarc z=$zProdTarget angle=$beamAngle centerRadius=10
-beam ASCII file=$PIM1/musource_but_positron.txt firstEvent=$first nEvents=$numEvents
+beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
 
 ###define a generic  plane (i.e. the magenta planes which represent virtual s)
 
 #param MuSEDetColor=1,0,1,1 
 #(this gives the magenta color to the  plane)
 
-#param MuSEDetLength=15
-#param MuSEDetRadius=500
+param MuSEDetLength=15
+param MuSEDetRadius=500
 virtual MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
 virtual MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
 virtual MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
@@ -288,28 +288,17 @@ place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename
 
 place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
 
-#Adding zntuples to see if it works?
+#Zntuples placed at the positions of all elements
 zntuple z=-3624.344,-3609.473,-2632.9,-2618.028,-1458.544,-1443.166,-1428.294,-1054.809,-1045.57,-1029.733,-1028.742,-990.075,-989.084,-950.5-935.5,-22.5,-7.5,0,324,389.5,404.5,455,930,985,1000,1040,1515,1516.919,2015,2030,2950,3050,3863.415,3864.281,3915.376,3916.242,3941.357,3942.223,3950.45,4989.681,4999.934,5000.108,5001.753,5324.332,5512.708,5653.87,5670,5770,5847.046,6164.825,6347,6357,6362,6372,6760.291,6764.81,7200.39,7640.489,7965.78,8024.79,8039.79,9298.78,9322.78,9912.78,10024.78,10614.78,10619.68,10619.88,10875,11475,11625,11675,11857.5,11872.5,12139.68,12139.88,12144.78,12734.78,12846.78,13436.78,14645.904,14710.78,14725.78,14747.78,15073.071,15513.17,15953.269,16378.56,16393.56,16962.56,17552.56,17664.56,18254.56,18288.06,22159
 #zntuple z=0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,22159
 #zntuple zloop=0:22159:50
-#this places the first virtual  
 
 place MuSEDet z=-$MuSEDetLength rename=S_QTA11
-
-#this places a virtual  at start of quad QTA11
-#That is useful if true; but the z positions don't seem to line up?
 
 #*****Define and place Quad magnet named QTA11 with circular aperture ****
 ### define properties of quad magnet with circular aperture
 
 #Note that all Quad magnet placements are near copy pastes of structure, so comments for that will only be here. 
-
-#LDRIFT is nonspecified and not explicated anywhere.  Here's what I know:
-#it has something to do with Turtle
-#most of the time it's explicitly written but sometimes it isn't
-#One curve down the line writes that LDRIFT is the 'length' between two objects; but this is hard to line up
-#My best guess is that it is a value written for each quad so that if one quad is moved further, the magnets after it move as well; but this breaks after the second bend, where one DRIFT value is used for all
-#Also, what is the difference between PDRIFT and LDRIFT? PDRIFT is half of LDRIFT always
 
 param LDRIFT1=0
 param PDRIFT1=$LDRIFT1/2
@@ -367,8 +356,6 @@ param PQTB1=$PDRIFT21+0.5*$LDRIFT2+0.5*$LQTB
  
 place QTB11 z=$PQTB1 
 
-#Design question - why is there a definition mid placing? - Rewrite, the difinition is just 'what is the size / magnetic field etc.  The quad is prebuilt.  
-
 #**** Define and place Quad magnet named QTB12 with rounded + aperture ****
 param LDRIFT20=110
 
@@ -421,12 +408,9 @@ place VJaw z=5720 y=0.5*$VJawHeight+80.7
 param LDRIFT4=1334
 param PDRIFT4=$PDRIFT3+0.5*$LDRIFT3+0.5*$LDRIFT4
 
-#Misspelled shield placed after the curve so that particles that don't make the turn are killed
+#shield placed after the curve so that particles that don't make the turn are killed
 
 place SHIELD rename=SHEILD_A z=$PDRIFT4/2-250 length=$PDRIFT4+2500
-
-#Trying to place a virtual ...
-place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-12 rename=Before1
 
 place MuSEDet z=6384.0-$LPole-0.5*$MuSEDetLength-2 rename=Det1
 
@@ -500,8 +484,6 @@ endif
 
 #********Place shield****************************************************************
 
-# What does this shield do? A previous shield was made for this purpose I believe?
-
 place SHIELD rename=sheild_bend z=$PDRIFT4+$L_center_line_ASM length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
 param LDRIFT5=1357
 param PDRIFT5=$PASM1+0.5*$L_center_line_ASM+0.5*$LDRIFT5
@@ -509,8 +491,6 @@ param beginCenter=$PASM1+0.5*$L_center_line_ASM
 
 #****place Det2 at the exit of the first dipole
 place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=E_ASM1
-
-# names are not consistent, so they're also not as descriptive as they'd like to be.  I will probably rename them.
 
 #*****Place quad magnet with name QSL11 and 'round +' type aperture *******************
 
@@ -554,8 +534,6 @@ place Collimator z=11650 x=0.5*$CollWidth+$CollOpen
 
 place IFPSheet z=$PQSL12+300
 
-# What is this sheet / what are the GEMs?
-
 box IFP width=1000 height=1000 length=600 color=.8,.8,.8 kill=0 material=Air
 place IFP z=11175
 
@@ -573,7 +551,6 @@ place MuSEDet z=11650+$LDRIFTCollGEM+0.5*$CollLength+80+30 rename=C_IFP
 param LDRIFT8=512
 
 #P Roy: 3 Oct 2018: LDRIFT8 def. changed to match Turtle drift (412 mm + 100 mm (100 mm is to match #IFP width in turtle))
-#On this note: can this be explained?
 
 param PDRIFT8=$PDRIFT7+0.5*$MuSEDetLength+0.5*$LDRIFT7
 #same as z of IFP
@@ -649,7 +626,6 @@ else
 endif
 
 #*****************ANOTHER SHIELD*******************************
-# ^ Why?
 place SHIELD rename=sheild_bend1 z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+2 length=4000 innerRadius=2.0*$RIRON outerRadius=2.1*$RIRON initialPhi=65 finalPhi=295
 
 #*******Place virtual detector and label it as Det5***********************************
@@ -734,8 +710,6 @@ box Hall width=1000 height=1000 length=570 color=.8,.8,.8 kill=0 material=Air
 #place Hall z=$targetLocation-0
 
 place MuSEDetBH z=$targetLocation-300 rename=DetBH
-
-#The detector makes sense; what is the GEM? If not another detector (which would align?)
 
 place MuSEDetGEM z=$targetLocation-270 rename=DetGEM0
 place MuSEDetGEM z=$targetLocation-210 rename=DetGEM1
