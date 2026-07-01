@@ -555,15 +555,15 @@ param IFPLENGTH=400
 param IFPWallLength=0.5
 param WindowSize=30
 
-box AirIFP width=IFPWIDTH height=IFPHEIGHT length=IFPLENGTH color=.5,.5,.5 kill=0 material=Air
-place AirIFP z=11175
+#box AirIFP width=IFPWIDTH height=IFPHEIGHT length=IFPLENGTH color=.5,.5,.5 kill=0 material=Air
+#place AirIFP z=11175
 
-box IFPWall width=IFPWIDTH height=IFPHEIGHT length=IFPWallLength material=Ti color=.9,.9,.9 kill=1
-box IFPWindow width=WindowSize height=WindowSize length=IFPWallLength material=Vaccuum color=.1,.1,.1 kill=0
-place IFPWall z=11175-IFPWIDTH/2-IFPWallLength/2
-place IFPWall z=11175+IFPWIDTH/2+IFPWallLength/2
-place IFPWindow z=11175-IFPWIDTH/2-IFPWallLength/2
-place IFPWindow z=11175+IFPWIDTH/2+IFPWallLength/2
+#box IFPWall width=IFPWIDTH height=IFPHEIGHT length=IFPWallLength material=Ti color=.9,.9,.9 kill=1
+#box IFPWindow width=WindowSize height=WindowSize length=IFPWallLength material=Vaccuum color=.1,.1,.1 kill=0
+#place IFPWall z=11175-IFPWIDTH/2-IFPWallLength/2
+#place IFPWall z=11175+IFPWIDTH/2+IFPWallLength/2
+#place IFPWindow z=11175-IFPWIDTH/2-IFPWallLength/2
+#place IFPWindow z=11175+IFPWIDTH/2+IFPWallLength/2
 
 
 # PRoy : value of z = 11650 mm (with Prod target z @ -958 mm). 11650+958 mm = 12608 mm
