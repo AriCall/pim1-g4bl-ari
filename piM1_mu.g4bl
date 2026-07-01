@@ -203,9 +203,9 @@ beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
 
 param MuSEDetLength=15
 param MuSEDetRadius=500
-virtual MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
-virtual MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
-virtual MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
+virtualdetector MuSEDet radius=$MuSEDetRadius length=$MuSEDetLength color=$MuSEDetColor material=Vacuum
+virtualdetector MuSEDetBH radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
+virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYOXYMETHYLENE
 
 
 ### define QSL quad (i.e. quadrupole magnet properties, the magnets are shown as red cylinders)
