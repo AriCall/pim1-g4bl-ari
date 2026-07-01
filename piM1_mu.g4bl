@@ -198,7 +198,7 @@ beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
 
 ###define a generic  plane (i.e. the magenta planes which represent virtual s)
 
-#param MuSEDetColor=1,0,1,1 
+param MuSEDetColor=1,0,1,1 
 #(this gives the magenta color to the  plane)
 
 param MuSEDetLength=15
