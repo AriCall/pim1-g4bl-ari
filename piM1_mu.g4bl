@@ -554,7 +554,6 @@ param IFPHEIGHT=1000
 param IFPLENGTH=400
 param IFPWallLength=0.5
 param WindowSize=30
-degraderLength=0.5
 
 #box AirIFP width=IFPWIDTH height=IFPHEIGHT length=IFPLENGTH color=.5,.5,.5 kill=0 material=Air
 #place AirIFP z=11175
@@ -565,7 +564,8 @@ degraderLength=0.5
 #place IFPWall z=11175+IFPWIDTH/2+IFPWallLength/2
 #place IFPWindow z=11175-IFPWIDTH/2-IFPWallLength/2
 #place IFPWindow z=11175+IFPWIDTH/2+IFPWallLength/2
-box Degrader width=990 height=990 length=degraderLength color=0,0,0 kill=0 material=Al
+box Degrader width=990 height=990 length=0.5 color=0,0,0 kill=0 material=Al
+place Degrader z=11175
 
 
 # PRoy : value of z = 11650 mm (with Prod target z @ -958 mm). 11650+958 mm = 12608 mm
