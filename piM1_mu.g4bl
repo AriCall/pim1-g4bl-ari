@@ -550,7 +550,7 @@ place MuSEDet z=11650+$LDRIFTCollGEM+0.5*$CollLength+80+30 rename=C_IFP
 #*******Place degrader windows and air***********************************************************
 
 box HalfIFP width=1000 height=1000 length=300 color=.8,.8,.2 kill=0 material=Air
-box Degrader width=990 height=990 length=20 color=0,0,0 kill=0 material=Pb
+box Degrader width=990 height=990 length=20 color=0,0,0 kill=0 material=Al
 #The halves are placed at a center of 11175, then offset by 150 + the width of the degrader + 1.  For 20 mm, this is 11023 and 11327
 place HalfIFP z=11004
 place Degrader z=11175
