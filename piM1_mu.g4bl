@@ -256,7 +256,7 @@ box Collimator width=$CollWidth height=400 length=$CollLength material=Cu color=
 # Define plastic sheet
 ######################
 
-box IFPSheet width=$CollWidth height=400 length=.2 material=POLYOXYMETHYLENE color=.9,.9,.9
+box IFPSheet width=$CollWidth height=400 length=.2 material=POLYOXYMETHYLENE color=.9,.1,.9
 box IFPSheet1 width=$CollWidth height=400 length=.2 material=POLYOXYMETHYLENE color=.9,.9,.9
 box beamexit width=$CollWidth height=400 length=.2 material=POLYOXYMETHYLENE color=.9,.9,.9
 
