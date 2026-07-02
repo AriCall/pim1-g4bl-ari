@@ -564,7 +564,7 @@ param WindowSize=30
 #place IFPWall z=11175+IFPWIDTH/2+IFPWallLength/2
 #place IFPWindow z=11175-IFPWIDTH/2-IFPWallLength/2
 #place IFPWindow z=11175+IFPWIDTH/2+IFPWallLength/2
-box Degrader width=990 height=990 length=0.5 color=0,0,0 kill=0 material=Al
+box Degrader width=990 height=990 length=2 color=0,0,0 kill=0 material=Al
 place Degrader z=11175
 
 
