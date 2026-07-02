@@ -534,8 +534,10 @@ place Collimator z=11650 x=0.5*$CollWidth+$CollOpen
 
 place IFPSheet z=$PQSL12+300
 
-box IFP width=1000 height=1000 length=600 color=.8,.8,.2 kill=0 material=Air
-place IFP z=11175
+#box IFP width=1000 height=1000 length=600 color=.8,.8,.2 kill=0 material=Air
+#place IFP z=11175
+
+#Replacing base IFP box placement with two halves and a center degrading material.
 
 #*******Place virtual detector at the IFP and label it as Det3***********************************
 #place MuSEDet z=$PDRIFT7+0.5*$LDRIFT7+0.5*$MuSEDetLength rename=Det3
@@ -547,26 +549,12 @@ place MuSEDet z=11650+$LDRIFTCollGEM+0.5*$CollLength+80+30 rename=C_IFP
 
 #*******Place degrader windows and air***********************************************************
 
-#height needs to be checked
-
-param IFPWIDTH=1000
-param IFPHEIGHT=1000
-param IFPLENGTH=400
-param IFPWallLength=0.5
-param WindowSize=30
-
-#box AirIFP width=IFPWIDTH height=IFPHEIGHT length=IFPLENGTH color=.5,.5,.5 kill=0 material=Air
-#place AirIFP z=11175
-
-#box IFPWall width=IFPWIDTH height=IFPHEIGHT length=IFPWallLength material=Ti color=.9,.9,.9 kill=1
-#box IFPWindow width=WindowSize height=WindowSize length=IFPWallLength material=Vaccuum color=.1,.1,.1 kill=0
-#place IFPWall z=11175-IFPWIDTH/2-IFPWallLength/2
-#place IFPWall z=11175+IFPWIDTH/2+IFPWallLength/2
-#place IFPWindow z=11175-IFPWIDTH/2-IFPWallLength/2
-#place IFPWindow z=11175+IFPWIDTH/2+IFPWallLength/2
+box HalfIFP width=1000 height=1000 length=300 color=.8,.8,.2 kill=0 material=Air
 box Degrader width=990 height=990 length=2 color=0,0,0 kill=0 material=Pb
+#The halves are placed at a center of 11175, then offset by 150 + the width of the degrader + 1.  For 2 mm, this is 11023 and 11327
+place HalfIFP z=11023
 place Degrader z=11175
-
+place HalfIFP z=11327
 
 # PRoy : value of z = 11650 mm (with Prod target z @ -958 mm). 11650+958 mm = 12608 mm
 
