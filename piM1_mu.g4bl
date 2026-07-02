@@ -534,7 +534,7 @@ place Collimator z=11650 x=0.5*$CollWidth+$CollOpen
 
 place IFPSheet z=$PQSL12+300
 
-box IFP width=1000 height=1000 length=600 color=.8,.8,.8 kill=0 material=Air
+box IFP width=1000 height=1000 length=600 color=.8,.8,.2 kill=0 material=Air
 place IFP z=11175
 
 #*******Place virtual detector at the IFP and label it as Det3***********************************
