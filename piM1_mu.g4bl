@@ -567,7 +567,7 @@ param LDRIFT8=512
 param PDRIFT8=$PDRIFT7+0.5*$MuSEDetLength+0.5*$LDRIFT7
 #same as z of IFP
 
-param BQSL13=0.9068*$scale*$scaleQSL
+param BQSL13=0.9068*$scale*$scaleQSL*$MOMENTUMSCALE
 
 param GradBQSL13=$BQSL13/$RQSL*$kGpmm_to_Tpm
 param PQSL13=$PDRIFT8+$LDRIFT8+0.5*$LQSL
@@ -584,7 +584,7 @@ place IFPSheet1 z=$PQSL13-300
 param LDRIFT9=112
 param PDRIFT9=$PQSL13+0.5*$LQSL+0.5*$LDRIFT9
 
-param BQSL14=-1.2763*$scale*$scaleQSL
+param BQSL14=-1.2763*$scale*$scaleQSL*$MOMENTUMSCALE
 
 param GradBQSL14=$BQSL14/$RQSL*$kGpmm_to_Tpm
 param PQSL14=$PDRIFT9+0.5*$LDRIFT9+0.5*$LQSL
@@ -613,7 +613,7 @@ if "$fieldMap==1"
      cornerarc z=$PDRIFT10+0.5*$LDRIFT10 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
      place SHIELD length=950 z=$PASM2 innerRadius=3*$RIRON outerRadius=3.1*$RIRON initialPhi=-60 finalPhi=60
      #The map is set to 1Tesla so the current/intensity gives the strength of the dipole in Tesla 
-     param BASM2=-0.591271616286*155.0/210.0*$scale*$scaleDipole*.9975
+     param BASM2=-0.591271616286*155.0/210.0*$scale*$scaleDipole*.9975*$MOMENTUMSCALE
      place ASM2 z=$PASM2 current=$BASM2  
      cornerarc z=$PASM2 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
 else
@@ -648,7 +648,7 @@ place MuSEDet z=$PASM2-775.39+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 r
 #*****Place quad magnet with name QSL15 and 'round +' type aperture *******************
 param LDRIFT11=684
 
-param BQSL15=-0.3865*$scale*$scaleQSL*.99999*$SCALE15
+param BQSL15=-0.3865*$scale*$scaleQSL*.99999*$SCALE15*$MOMENTUMSCALE
 
 param GradBQSL15=$BQSL15/$RQSL*$kGpmm_to_Tpm
 #place QSL rename=QSL15 z=2940-1452/2.0-$LQSL/2+$PASM2
@@ -661,7 +661,7 @@ place QSL rename=QSL15 gradient=$GradBQSL15 z=$PQSL15
 # PRoy : value of PQSL15 = 17246.6 mm (with Prod target z @ -958 mm).17246.6 +958 mm = 18204.6 mm
 
 #*****Place quad magnet with name QSL16 and 'round +' type aperture *******************
-param BQSL16=0.5962*$scale*$scaleQSL*1.000001*$SCALE16
+param BQSL16=0.5962*$scale*$scaleQSL*1.000001*$SCALE16*$MOMENTUMSCALE
 
 param GradBQSL16=$BQSL16/$RQSL*$kGpmm_to_Tpm
 # place QSL rename=QSL16 gradient=$GradBQSL16 z=2940-$LQSL/2+$PASM2
@@ -676,7 +676,7 @@ place QSL rename=QSL16 gradient=$GradBQSL16 z=$PQSL16
 
 #*****Place quad magnet with name QSL17 and 'round +' type aperture *******************
 
-param BQSL17=-1.3454*$scale*$scaleQSL*.999999*$SCALE17
+param BQSL17=-1.3454*$scale*$scaleQSL*.999999*$SCALE17*$MOMENTUMSCALE
 
 param GradBQSL17=$BQSL17/$RQSL*$kGpmm_to_Tpm
 #place QSL rename=QSL17 gradient=$GradBQSL17 z=4231.25+$PASM2
@@ -691,7 +691,7 @@ place QSL rename=QSL17 gradient=$GradBQSL17 z=$PQSL17
 
 #*****Place quad magnet with name QSL18 and 'round +' type aperture *******************
 
-param BQSL18=1.2568*$scale*$scaleQSL*1.00001*$SCALE18
+param BQSL18=1.2568*$scale*$scaleQSL*1.00001*$SCALE18*$MOMENTUMSCALE
 
 param GradBQSL18=$BQSL18/$RQSL*$kGpmm_to_Tpm
 #place QSL rename=QSL18 gradient=$GradBQSL18 z=4957.75+$PASM2
