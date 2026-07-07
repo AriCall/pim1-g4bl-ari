@@ -76,7 +76,9 @@ param CollOpen=300
 
 #Sets the momentum of the channel to 155 MeV
 
-param -unset pChannel=155
+#Contrary to other comments, the beam momentum is now variable
+
+param -unset pChannel=100
 
 #The offset is a user defined scaling factor of the channel momentum.
 
