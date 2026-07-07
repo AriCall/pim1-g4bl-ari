@@ -76,7 +76,7 @@ param CollOpen=300
 
 #Sets the momentum of the channel to 155 MeV
 
-param -unset pChannel=155
+param -unset pChannel=100
 
 #The offset is a user defined scaling factor of the channel momentum.
 
@@ -434,7 +434,8 @@ if "$fieldMap==1"
      param PASM1=$PDRIFT4+0.5*$LDRIFT4+0.5*$L_center_line_ASM
      place SHIELD length=950 z=$PASM1 innerRadius=3*$RIRON outerRadius=3.1*$RIRON initialPhi=-60 finalPhi=60
      #The map is set to 1Tesla so the current/intensity gives the strength of the dipole in Tesla 
-     param BASM1=-0.591271616286*155.0/210.0*$scale*$scaleDipole
+     #NOTE I CHANGED THE 155 HERE TO 100!!!! THIS NEEDS TO BE CHANGED BACK!!!!
+     param BASM1=-0.591271616286*100.0/210.0*$scale*$scaleDipole
      place ASM1 z=$PASM1 current=$BASM1
      cornerarc z=$PASM1 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
 else
@@ -470,8 +471,8 @@ else
      place Pole rename=ASM1_front z=6384.01-0.5*$LPole-1 quadrupole=-0/$RPole*$kGpmm_to_Tpm sextupole=0/($RPole*$RPole)*$kGpmm2_to_Tpm2
 
      #### Place idealSectorBend magnet ################
-
-     place BendType1 rename=ASM1 z=6384.01 By=-0.99974*0.591271616286*155.0/210.0*$scale
+     #NOTE THAT I CHANGED THE 155 HERE TO 100 THIS NEEDS TO BE CHANGED BACK
+     place BendType1 rename=ASM1 z=6384.01 By=-0.99974*0.591271616286*100.0/210.0*$scale
      fieldlines radius=1000 center=0,0,6384 exit=1
 
      cornerarc z=6384.01 angle=$ASMAngleDeg centerRadius=$L_center_line_ASM/$ASMAngleRad
@@ -613,7 +614,8 @@ if "$fieldMap==1"
      cornerarc z=$PDRIFT10+0.5*$LDRIFT10 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
      place SHIELD length=950 z=$PASM2 innerRadius=3*$RIRON outerRadius=3.1*$RIRON initialPhi=-60 finalPhi=60
      #The map is set to 1Tesla so the current/intensity gives the strength of the dipole in Tesla 
-     param BASM2=-0.591271616286*155.0/210.0*$scale*$scaleDipole*.9975*$MOMENTUMSCALE
+     #NOTE I CHANGED THE 155 HERE TO 100 IT NEEDS TO BE CHANGED BACK
+     param BASM2=-0.591271616286*100.0/210.0*$scale*$scaleDipole*.9975*$MOMENTUMSCALE
      place ASM2 z=$PASM2 current=$BASM2  
      cornerarc z=$PASM2 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
 else
