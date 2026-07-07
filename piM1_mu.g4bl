@@ -265,16 +265,17 @@ box beamexit width=$CollWidth height=400 length=.2 material=POLYOXYMETHYLENE col
 ######################
 
 # Define the horizontal blocks of the jaw which move in +/- X direction
+#REMOVED BUT CAN BE ADDED BACK
 param HJawLength=100
 param HJawWidth=100
 param HJawHeight=400
-box HJaw width=$HJawWidth height=$HJawHeight length=$HJawLength material=Cu color=.8,.8,.8 kill=1
+#box HJaw width=$HJawWidth height=$HJawHeight length=$HJawLength material=Cu color=.8,.8,.8 kill=1
 
 # Define the vertical blocks of the jaw which move in +/- Y direction
 param VJawLength=100
 param VJawWidth=21
 param VJawHeight=200
-box VJaw width=$VJawWidth height=$VJawHeight length=$VJawLength material=Cu color=.8,.8,.8 kill=1
+#box VJaw width=$VJawWidth height=$VJawHeight length=$VJawLength material=Cu color=.8,.8,.8 kill=1
 
 ####################
 #Beam elements
@@ -396,14 +397,14 @@ fieldMaterial=Vacuum
 place B z=3000 rename=B1 rotation=Z90 By=.045
 
 #############Place a jaw as a rectangular slit #####################################
-
+#REMOVED BUT CAN BE ADDED BACK
 #What does this jaw do?
 
-place HJaw z=5720-00 x=-(0.5*$HJawWidth+80.7)
-place HJaw z=5720 x=0.5*$HJawWidth+80.7 
+#place HJaw z=5720-00 x=-(0.5*$HJawWidth+80.7)
+#place HJaw z=5720 x=0.5*$HJawWidth+80.7 
 
-place VJaw z=5720 y=-(0.5*$VJawHeight+80.7) 
-place VJaw z=5720 y=0.5*$VJawHeight+80.7 
+#place VJaw z=5720 y=-(0.5*$VJawHeight+80.7) 
+#place VJaw z=5720 y=0.5*$VJawHeight+80.7 
 #####################################################################################
 
 param LDRIFT4=1334
