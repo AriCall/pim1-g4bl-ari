@@ -60,7 +60,7 @@
 #Remember to set the number of events higher again when running; this is for a quick test.
 param -unset seed=12349
 param -unset first=1
-param -unset numEvents=1500
+param -unset numEvents=100000
 param -unset last=$first+$numEvents-1
 param -unset beamPart=mu+
 param CollOpen=300
@@ -76,7 +76,7 @@ param CollOpen=300
 
 #Sets the momentum of the channel to 155 MeV
 
-param -unset pChannel=100
+param -unset pChannel=155
 
 #The offset is a user defined scaling factor of the channel momentum.
 
