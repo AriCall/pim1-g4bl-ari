@@ -76,17 +76,15 @@ param CollOpen=300
 
 #Sets the momentum of the channel to 155 MeV
 
-#Contrary to other comments, the beam momentum is now variable
-
-param -unset pChannel=100
+param -unset pChannel=155
 
 #The offset is a user defined scaling factor of the channel momentum.
 
 # PER 23 Oct 2018 Allow the user to specify a different momentum
-param -unset pOffset=1.0
+param -unset pOffset=.5
 param -unset pBeam=$pChannel*$pOffset
 
-#If the scale factor is not one, the scale of the magnetic fields are adjusted.  The 155 here should probably be the variable pChannel.
+#If the scale factor is not one, the scale of the magnetic fields are adjusted. 
 
 # PER 2 Sept 2018 For beamline momentum other than 155, we scale current in the magnets
 param scale=$pBeam/155
