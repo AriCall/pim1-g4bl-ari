@@ -81,7 +81,7 @@ param -unset pChannel=155
 #The offset is a user defined scaling factor of the channel momentum.
 
 # PER 23 Oct 2018 Allow the user to specify a different momentum
-param -unset pOffset=.5
+param -unset pOffset=1
 param -unset pBeam=$pChannel*$pOffset
 
 #If the scale factor is not one, the scale of the magnetic fields are adjusted. 
