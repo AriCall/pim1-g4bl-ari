@@ -60,7 +60,7 @@
 #Remember to set the number of events higher again when running; this is for a quick test.
 param -unset seed=12349
 param -unset first=1
-param -unset numEvents=100000
+param -unset numEvents=1500
 param -unset last=$first+$numEvents-1
 param -unset beamPart=mu+
 param CollOpen=300
@@ -290,10 +290,11 @@ place SHIELD z=$startZ-100 length=10 innerRadius=0 outerRadius=$RIRON*1.1 rename
 place MuSEDet z=$startZ+$MuSEDetLength rename=InitDet 
 
 #Zntuples placed at the positions of all elements
-zntuple z=-3624.344,-3609.473,-2632.9,-2618.028,-1458.544,-1443.166,-1428.294,-1054.809,-1045.57,-1029.733,-1028.742,-990.075,-989.084,-950.5-935.5,-22.5,-7.5,0,324,389.5,404.5,455,930,985,1000,1040,1515,1516.919,2015,2030,2950,3050,3863.415,3864.281,3915.376,3916.242,3941.357,3942.223,3950.45,4989.681,4999.934,5000.108,5001.753,5324.332,5512.708,5653.87,5670,5770,5847.046,6164.825,6347,6357,6362,6372,6760.291,6764.81,7200.39,7640.489,7965.78,8024.79,8039.79,9298.78,9322.78,9912.78,10024.78,10614.78,10619.68,10619.88,10875,11475,11625,11675,11857.5,11872.5,12139.68,12139.88,12144.78,12734.78,12846.78,13436.78,14645.904,14710.78,14725.78,14747.78,15073.071,15513.17,15953.269,16378.56,16393.56,16962.56,17552.56,17664.56,18254.56,18288.06,22159
+#zntuple z=-3624.344,-3609.473,-2632.9,-2618.028,-1458.544,-1443.166,-1428.294,-1054.809,-1045.57,-1029.733,-1028.742,-990.075,-989.084,-950.5-935.5,-22.5,-7.5,0,324,389.5,404.5,455,930,985,1000,1040,1515,1516.919,2015,2030,2950,3050,3863.415,3864.281,3915.376,3916.242,3941.357,3942.223,3950.45,4989.681,4999.934,5000.108,5001.753,5324.332,5512.708,5653.87,5670,5770,5847.046,6164.825,6347,6357,6362,6372,6760.291,6764.81,7200.39,7640.489,7965.78,8024.79,8039.79,9298.78,9322.78,9912.78,10024.78,10614.78,10619.68,10619.88,10875,11475,11625,11675,11857.5,11872.5,12139.68,12139.88,12144.78,12734.78,12846.78,13436.78,14645.904,14710.78,14725.78,14747.78,15073.071,15513.17,15953.269,16378.56,16393.56,16962.56,17552.56,17664.56,18254.56,18288.06,22159
 #zntuple z=0,1000,2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000,22159
 #zntuple zloop=0:22159:50
 #zntuple z=11014,11336
+zntuple=8040
 
 place MuSEDet z=-$MuSEDetLength rename=S_QTA11
 
@@ -316,7 +317,7 @@ param RQTA1=75.0
 
 #Magnetic field is scaled, gradient of the field is based on the radius and magnetic field of the quad.
 
-param BQTA1=-1.019*$scale*$scaleQT
+param BQTA1=-1.019*$scale*$scaleQT*$SCALE1
 param GradQTA1=$BQTA1/$RQTA1*$kGpmm_to_Tpm 
 
 param RIRON=500
@@ -348,7 +349,7 @@ param RQTB=115.0
 # PRoy (Nov 9, 2018): assume turtle transport model pic from is for pi+.
 # QTB1 defocuses pi+ in x, i.e. gradient should be -ve (pg 62, g4beamline manual).
 
-param BQTB1=-1.089*$scale*$scaleQT
+param BQTB1=-1.089*$scale*$scaleQT*$SCALE2
 
 param GradQTB1=$BQTB1/$RQTB*$kGpmm_to_Tpm
 genericquad QTB11 gradient=$GradQTB1 fieldLength=$LQTB coilHalfWidth=50 coilRadius=150 poleTipRadius=125 ironRadius=$RIRON ironLength=$LQTB kill=$killInIron ironColor=$ironColor
@@ -372,7 +373,7 @@ param PDRIFT22=$PQTB1+0.5*$LQTB+0.5*$LDRIFT20
 
 #scaled by the whole scale, and also the scale of QT magnets.
 
-param BQTB2=1.221*$scale*$scaleQT
+param BQTB2=1.221*$scale*$scaleQT*$SCALE3
 
 param GradBQTB2=$BQTB2/$RQTB*$kGpmm_to_Tpm
 genericquad QTB12 gradient=$GradBQTB2 fieldLength=$LQTB coilHalfWidth=50 coilRadius=150 poleTipRadius=125 ironRadius=$RIRON ironLength=$LQTB kill=$killInIron ironColor=$ironColor
