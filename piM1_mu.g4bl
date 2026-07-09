@@ -76,7 +76,7 @@ param CollOpen=300
 
 #Sets the momentum of the channel to 155 MeV
 
-param -unset pChannel=100
+param -unset pChannel=155
 
 #The offset is a user defined scaling factor of the channel momentum.
 
@@ -194,7 +194,7 @@ start x=0. y=0. z=0. initialZ=$startZ
 #Adjust centerline to 22 degrees (produced particles are moved directly into the 22 degree direction; the cornerarc is very tight)
 
 cornerarc z=$zProdTarget angle=$beamAngle centerRadius=10
-beam ASCII file=$PIM1/musource_100.txt firstEvent=$first nEvents=$numEvents
+beam ASCII file=$PIM1/musource.txt firstEvent=$first nEvents=$numEvents
 
 ###define a generic  plane (i.e. the magenta planes which represent virtual s)
 
