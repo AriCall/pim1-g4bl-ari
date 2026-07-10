@@ -106,7 +106,7 @@ endif
 
 # Defines that there is a prebuilt fieldmap, and where it is.  Dipoles are scaled empirically.  Allows QSL and QT type magnets to be scaled.
 
-param -unset fieldMap=1
+param -unset fieldMap=0
 param -unset map1=$PIM1/ASM1.g4blmap
 param -unset map2=$PIM1/ASM2.g4blmap
 # PER & PRoy  Add ability to scale magnets sets
