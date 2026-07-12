@@ -614,7 +614,7 @@ if "$fieldMap==1"
      cornerarc z=$PDRIFT10+0.5*$LDRIFT10 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
      place SHIELD length=950 z=$PASM2 innerRadius=3*$RIRON outerRadius=3.1*$RIRON initialPhi=-60 finalPhi=60
      #The map is set to 1Tesla so the current/intensity gives the strength of the dipole in Tesla 
-     param BASM2=-0.591271616286*155.0/210.0*$scale*$scaleDipole*.9975*$MOMENTUMSCALE
+     param BASM2=-0.591271616286*155.0/210.0*$scale*$scaleDipole*.9975*$MOMENTUMSCALE*$SECONDTURNSCALE
      place ASM2 z=$PASM2 current=$BASM2  
      cornerarc z=$PASM2 angle=$ASMAngleDeg/2. centerRadius=$ASMRadius radiusCut=$ASMRadius-160
 else
