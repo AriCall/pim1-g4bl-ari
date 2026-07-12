@@ -496,7 +496,7 @@ place MuSEDet z=6384.01+$L_center_line_ASM+$LPole+0.5*$MuSEDetLength+100 rename=
 
 #*****Place quad magnet with name QSL11 and 'round +' type aperture *******************
 
-param BQSL11=-1.2767*$scale*$scaleQSL
+param BQSL11=-1.2767*$scale*$scaleQSL*$SCALE11
 
 param GradBQSL11=$BQSL11/$RQSL*$kGpmm_to_Tpm
 param PQSL11=$PDRIFT5+0.5*$LDRIFT5+0.5*$LQSL
@@ -507,7 +507,7 @@ place QSL rename=QSL11 gradient=$GradBQSL11 z=$PQSL11
 param LDRIFT6=112
 param PDRIFT6=$PQSL11+0.5*$LQSL+0.5*$LDRIFT6
 
-param BQSL12=0.9166*$scale*$scaleQSL
+param BQSL12=0.9166*$scale*$scaleQSL*$SCALE12
 
 param GradBQSL12=$BQSL12/$RQSL*$kGpmm_to_Tpm
 param PQSL12=$PDRIFT6+0.5*$LDRIFT6+0.5*$LQSL
@@ -568,7 +568,7 @@ param LDRIFT8=512
 param PDRIFT8=$PDRIFT7+0.5*$MuSEDetLength+0.5*$LDRIFT7
 #same as z of IFP
 
-param BQSL13=0.9068*$scale*$scaleQSL*$MOMENTUMSCALE
+param BQSL13=0.9068*$scale*$scaleQSL*$MOMENTUMSCALE*$SCALE13
 
 param GradBQSL13=$BQSL13/$RQSL*$kGpmm_to_Tpm
 param PQSL13=$PDRIFT8+$LDRIFT8+0.5*$LQSL
@@ -585,7 +585,7 @@ place IFPSheet1 z=$PQSL13-300
 param LDRIFT9=112
 param PDRIFT9=$PQSL13+0.5*$LQSL+0.5*$LDRIFT9
 
-param BQSL14=-1.2763*$scale*$scaleQSL*$MOMENTUMSCALE
+param BQSL14=-1.2763*$scale*$scaleQSL*$MOMENTUMSCALE*$SCALE14
 
 param GradBQSL14=$BQSL14/$RQSL*$kGpmm_to_Tpm
 param PQSL14=$PDRIFT9+0.5*$LDRIFT9+0.5*$LQSL
