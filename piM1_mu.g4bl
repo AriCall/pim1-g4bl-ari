@@ -58,9 +58,9 @@
 
 #Sets the seed, labels events from 1-last, sets the beamline to only muons, sets collimator radius
 #Remember to set the number of events higher again when running; this is for a quick test.
-param -unset seed=12349
+param -unset seed=12350
 param -unset first=1
-param -unset numEvents=100
+param -unset numEvents=10000
 param -unset last=$first+$numEvents-1
 param -unset beamPart=$BEAMPART
 param CollOpen=300
@@ -183,7 +183,6 @@ trackcuts keep=$BEAMPART
 #PRoy: 111 is white, 011 is light blue
 #PRoy: by default, red for negative particles, green for neutrals 
 
-#Without collective, there is no timestep ntuple generated.  What is the value of this?
 #The world is set to vaccuum, limits maximum step size, sets the start position for the beam.  Why is z not set to 0 initially, not initialZ?  Why is initialZ negative?
 
 collective
@@ -211,7 +210,7 @@ virtualdetector MuSEDetGEM radius=50 length=1 color=$MuSEDetColor material=POLYO
 ### define QSL quad (i.e. quadrupole magnet properties, the magnets are shown as red cylinders)
 ### The 'QSL' quad is defined here such that it has rounded + aperture. See pg 40 of user manual.
 
-#Defines QSL quads, with length and radius.  Why are only legnth and radius are defined externally? Particles in the iron are killed.
+#Defines QSL quads, with length and radius. Particles in the iron are killed.
 
 #PRoy 3 Oct 2018: corrected LQSL to 590 mm to match Turtle
 param LQSL=590
@@ -249,8 +248,6 @@ param CollLength=50
 param CollWidth=200
 
 box Collimator width=$CollWidth height=400 length=$CollLength material=Cu color=.8,.8,.8 kill=1
-
-#Collimator is only a flat sheet? There needs to be subtraction?
 
 ######################
 # Define plastic sheet
@@ -399,13 +396,11 @@ place B z=3000 rename=B1 rotation=Z90 By=.045
 
 #############Place a jaw as a rectangular slit #####################################
 #REMOVED BUT CAN BE ADDED BACK
-#What does this jaw do?
+place HJaw z=5720-00 x=-(0.5*$HJawWidth+80.7)
+place HJaw z=5720 x=0.5*$HJawWidth+80.7 
 
-#place HJaw z=5720-00 x=-(0.5*$HJawWidth+80.7)
-#place HJaw z=5720 x=0.5*$HJawWidth+80.7 
-
-#place VJaw z=5720 y=-(0.5*$VJawHeight+80.7) 
-#place VJaw z=5720 y=0.5*$VJawHeight+80.7 
+place VJaw z=5720 y=-(0.5*$VJawHeight+80.7) 
+place VJaw z=5720 y=0.5*$VJawHeight+80.7 
 #####################################################################################
 
 param LDRIFT4=1334
@@ -573,8 +568,6 @@ param BQSL13=0.9068*$scale*$scaleQSL*$MOMENTUMSCALE*$SCALE13
 param GradBQSL13=$BQSL13/$RQSL*$kGpmm_to_Tpm
 param PQSL13=$PDRIFT8+$LDRIFT8+0.5*$LQSL
 
-#What is PQSL? Position I'm assuming.
-
 place QSL rename=QSL13 gradient=$GradBQSL13 z=$PQSL13
 
 place IFPSheet1 z=$PQSL13-300
@@ -734,7 +727,7 @@ place MuSEDetGEM z=$targetLocation-110 rename=DetGEM3
 box Hall1 width=1000 height=1000 length=1200 color=.8,.8,.8 kill=0 material=Air
 place Hall1 z=$targetLocation-910
 
-#Target Detector is placed after the target loaction?
+#Target Detector is placed after the target loaction
 
 place MuSEDet z=$targetLocation+300 rename=DetTar
 
