@@ -392,7 +392,7 @@ param PDRIFT3=$PQTB2+0.5*$LQTB+0.5*$LDRIFT3
 genericbend B fieldWidth=500 fieldHeight=500 fieldLength=100 \
 ironWidth=800 ironHeight=800 ironLength=100 \
 fieldMaterial=Vacuum
-place B z=3000 rename=B1 rotation=Z90 By=.045
+place B z=3000 rename=B1 rotation=Z90 By=.045*$scale
 
 #############Place a jaw as a rectangular slit #####################################
 #REMOVED BUT CAN BE ADDED BACK
