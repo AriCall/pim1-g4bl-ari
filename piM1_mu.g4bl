@@ -262,7 +262,6 @@ box beamexit width=$CollWidth height=400 length=.2 material=POLYOXYMETHYLENE col
 ######################
 
 # Define the horizontal blocks of the jaw which move in +/- X direction
-#REMOVED BUT CAN BE ADDED BACK
 param HJawLength=100
 param HJawWidth=100
 param HJawHeight=400
