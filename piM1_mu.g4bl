@@ -63,7 +63,7 @@ param -unset first=1
 param -unset numEvents=$NUMEVENTS
 param -unset last=$first+$numEvents-1
 param -unset beamPart=$BEAMPART
-param CollOpen=300
+param CollOpen=$COLLOPEN
 #units are mm, CollOpen is open on one side, so total width is 2*CollOpen
 
 
@@ -524,8 +524,8 @@ param LDRIFTCollGEM=80
 #place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=-(0.5*$CollWidth+5)
 #place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=0.5*$CollWidth+5
 
-place Collimator z=11650 x=-(0.5*$CollWidth+$CollOpen)
-place Collimator z=11650 x=0.5*$CollWidth+$CollOpen
+place Collimator z=11650 x=-(0.5*$CollWidth+$CollOpen)+$COLLOFFSET
+place Collimator z=11650 x=0.5*$CollWidth+$CollOpen+$COLLOFFSET
 
 place IFPSheet z=$PQSL12+300
 
