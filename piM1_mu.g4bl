@@ -269,7 +269,7 @@ box HJaw width=$HJawWidth height=$HJawHeight length=$HJawLength material=Cu colo
 
 # Define the vertical blocks of the jaw which move in +/- Y direction
 param VJawLength=100
-param VJawWidth=21
+param VJawWidth=$HJAWSEP*0.5-2
 param VJawHeight=200
 box VJaw width=$VJawWidth height=$VJawHeight length=$VJawLength material=Cu color=.8,.8,.8 kill=1
 
@@ -394,12 +394,11 @@ fieldMaterial=Vacuum
 place B z=3000 rename=B1 rotation=Z90 By=.045*$scale*$FIRSTTURNVERTICAL
 
 #############Place a jaw as a rectangular slit #####################################
-#REMOVED BUT CAN BE ADDED BACK
-place HJaw z=5720-00 x=-(0.5*$HJawWidth+80.7)
-place HJaw z=5720 x=0.5*$HJawWidth+80.7 
+place HJaw z=5720-00 x=-(0.5*$HJawWidth+$HJAWSEP*0.5)
+place HJaw z=5720 x=0.5*$HJawWidth+$HJAWSEP*0.5 
 
-place VJaw z=5720 y=-(0.5*$VJawHeight+80.7) 
-place VJaw z=5720 y=0.5*$VJawHeight+80.7 
+place VJaw z=5720 y=-(0.5*$VJawHeight+0.5*$VJAWSEP) 
+place VJaw z=5720 y=0.5*$VJawHeight+0.5*$VJAWSEP
 #####################################################################################
 
 param LDRIFT4=1334
