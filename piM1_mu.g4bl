@@ -521,11 +521,11 @@ param offsetIFP=300
 
 param LDRIFTCollGEM=80
 
-place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=-(0.5*$CollWidth+5)
-place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=0.5*$CollWidth+5
+#place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=-(0.5*$CollWidth+5)
+#place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=0.5*$CollWidth+5
 
-#place Collimator z=11650 x=-(0.5*$CollWidth+$CollOpen)+$COLLOFFSET
-#place Collimator z=11650 x=0.5*$CollWidth+$CollOpen+$COLLOFFSET
+place Collimator z=11650 x=-(0.5*$CollWidth+$CollOpen)+$COLLOFFSET
+place Collimator z=11650 x=0.5*$CollWidth+$CollOpen+$COLLOFFSET
 
 place IFPSheet z=$PQSL12+300
 
