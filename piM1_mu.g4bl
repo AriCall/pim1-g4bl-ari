@@ -549,9 +549,9 @@ box HalfIFP width=1000 height=1000 length=300 color=.8,.8,.2,0.3 kill=0 material
 box Degrader width=990 height=990 length=$DEGLENGTH color=0,0,0 kill=0 material=$DEGMATERIAL
 #The halves are placed at a center of 11175, then offset by 150 + half the width of the degrader + 1.  For 20 mm, this is 11014 and 11336
 #Update; degrader moved to the midpoint between the collimators and the ifpsheet.  This is 11795
-place HalfIFP z=11614-$DEGLENGTH/2
+place HalfIFP z=11644-$DEGLENGTH/2
 place Degrader z=11795
-place HalfIFP z=11916+$DEGLENGTH/2
+place HalfIFP z=11946+$DEGLENGTH/2
 
 # PRoy : value of z = 11650 mm (with Prod target z @ -958 mm). 11650+958 mm = 12608 mm
 
