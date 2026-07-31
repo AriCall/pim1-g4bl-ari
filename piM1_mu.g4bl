@@ -521,11 +521,11 @@ param offsetIFP=300
 
 param LDRIFTCollGEM=80
 
-#place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=-(0.5*$CollWidth+5)
-#place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=0.5*$CollWidth+5
+place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=-(0.5*$CollWidth+5)
+place Collimator z=11650-120-$LDRIFTCollGEM-0.5*$CollLength x=0.5*$CollWidth+5
 
-place Collimator z=11650 x=-(0.5*$CollWidth+$CollOpen)+$COLLOFFSET
-place Collimator z=11650 x=0.5*$CollWidth+$CollOpen+$COLLOFFSET
+#place Collimator z=11650 x=-(0.5*$CollWidth+$CollOpen)+$COLLOFFSET
+#place Collimator z=11650 x=0.5*$CollWidth+$CollOpen+$COLLOFFSET
 
 place IFPSheet z=$PQSL12+300
 
@@ -737,7 +737,7 @@ place MuSEDet z=$targetLocation+1500 rename=DetBC1
 
 place MuSEDet z=$targetLocation+2500 rename=DetBC2
 
-#If the shield is placed, what do these ^ detectors get?
+#If the shield is placed, what do these ^ detectors gec?
 
 #nutple is a different kind of detector; used for counts etc.
 
