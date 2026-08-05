@@ -717,10 +717,10 @@ box Hall width=1000 height=1000 length=570 color=.8,.8,.8 kill=0 material=Air
 
 place MuSEDetBH z=$targetLocation-300 rename=DetBH
 
-place MuSEDetGEM z=$targetLocation-270 rename=DetGEM0
-place MuSEDetGEM z=$targetLocation-210 rename=DetGEM1
-place MuSEDetGEM z=$targetLocation-150 rename=DetGEM2
-place MuSEDetGEM z=$targetLocation-110 rename=DetGEM3
+#place MuSEDetGEM z=$targetLocation-270 rename=DetGEM0
+#place MuSEDetGEM z=$targetLocation-210 rename=DetGEM1
+#place MuSEDetGEM z=$targetLocation-150 rename=DetGEM2
+#place MuSEDetGEM z=$targetLocation-110 rename=DetGEM3
 
 # Multiple halls?
 
